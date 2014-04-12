@@ -1,0 +1,8 @@
+{
+    "name": "sandbox2",
+    "version": "0.0.1",
+    "dependencies": {
+        "bower": "1.3.2"
+        "connect" :"2.14.4"
+    }
+}

@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script src="vendor/requirejs/require.js" data-main="javascript/app"></script>
+
+</head>
+<body>
+<script type="text/x-handlebars">
+    <h2>Welcome to Ember.js</h2>
+
+    {{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="index">
+    <ul>
+        {{#each item in model}}
+        <li>{{item}}</li>
+        {{/each}}
+    </ul>
+</script>
+</body>
+</html>
