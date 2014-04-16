@@ -280,7 +280,7 @@ Ember.uuid = 0;
 /**
   Merge the contents of two objects together into the first object.
 
-  ```javascript
+  ```javascripts
   Ember.merge({first: 'Tom'}, {last: 'Dale'}); // {first: 'Tom', last: 'Dale'}
   var a = {first: 'Yehuda'}, b = {last: 'Katz'};
   Ember.merge(a, b); // a == {first: 'Yehuda', last: 'Katz'}, b == {last: 'Katz'}
@@ -305,7 +305,7 @@ Ember.merge = function(original, updates) {
   from JSLint complaining about use of ==, which can be technically
   confusing.
 
-  ```javascript
+  ```javascripts
   Ember.isNone();              // true
   Ember.isNone(null);          // true
   Ember.isNone(undefined);     // true
@@ -331,7 +331,7 @@ Ember.none = Ember.deprecateFunc("Ember.none is deprecated. Please use Ember.isN
   Constrains the rules on `Ember.isNone` by returning false for empty
   string and empty arrays.
 
-  ```javascript
+  ```javascripts
   Ember.isEmpty();                // true
   Ember.isEmpty(null);            // true
   Ember.isEmpty(undefined);       // true
@@ -355,7 +355,7 @@ Ember.empty = Ember.deprecateFunc("Ember.empty is deprecated. Please use Ember.i
   /**
     A value is blank if it is empty or a whitespace string.
 
-    ```javascript
+    ```javascripts
     Ember.isBlank();                // true
     Ember.isBlank(null);            // true
     Ember.isBlank(undefined);       // true
@@ -714,7 +714,7 @@ Ember.Error.prototype = Ember.create(Error.prototype);
   internals encounter an error. This is useful for specialized error handling
   and reporting code.
 
-  ```javascript
+  ```javascripts
   Ember.onerror = function(error) {
     Em.$.ajax('/report-error', 'POST', {
       stack: error.stack,
@@ -1091,7 +1091,7 @@ Ember.wrap = function(func, superFunc) {
   Unlike `Ember.typeOf` this method returns true even if the passed object is
   not formally array but appears to be array-like (i.e. implements `Ember.Array`)
 
-  ```javascript
+  ```javascripts
   Ember.isArray();                                            // false
   Ember.isArray([]);                                          // true
   Ember.isArray( Ember.ArrayProxy.create({ content: [] }) );  // true
@@ -1115,7 +1115,7 @@ Ember.isArray = function(obj) {
   an array or array-like, returns the object. Otherwise adds the object to
   an array. If obj is `null` or `undefined`, returns an empty array.
 
-  ```javascript
+  ```javascripts
   Ember.makeArray();                           // []
   Ember.makeArray(null);                       // []
   Ember.makeArray(undefined);                  // []
@@ -1143,7 +1143,7 @@ function canInvoke(obj, methodName) {
 /**
   Checks to see if the `methodName` exists on the `obj`.
 
-  ```javascript
+  ```javascripts
   var foo = {bar: Ember.K, baz: null};
   Ember.canInvoke(foo, 'bar'); // true
   Ember.canInvoke(foo, 'baz'); // false
@@ -1162,7 +1162,7 @@ Ember.canInvoke = canInvoke;
   Checks to see if the `methodName` exists on the `obj`,
   and if it does, invokes it with the arguments passed.
 
-  ```javascript
+  ```javascripts
   var d = new Date('03/15/2013');
   Ember.tryInvoke(d, 'getTime'); // 1363320000000
   Ember.tryInvoke(d, 'setFullYear', [2014]); // 1394856000000
@@ -1200,7 +1200,7 @@ var needsFinallyFix = (function() {
   Provides try { } finally { } functionality, while working
   around Safari's double finally bug.
 
-  ```javascript
+  ```javascripts
   var tryable = function() {
     someResource.lock();
     runCallback(); // May throw error.
@@ -1261,7 +1261,7 @@ if (needsFinallyFix) {
   Provides try { } catch finally { } functionality, while working
   around Safari's double finally bug.
 
-  ```javascript
+  ```javascripts
   var tryable = function() {
     for (i=0, l=listeners.length; i<l; i++) {
       listener = listeners[i];
@@ -1372,7 +1372,7 @@ var toString = Object.prototype.toString;
 
   Examples:
 
-  ```javascript
+  ```javascripts
   Ember.typeOf();                       // 'undefined'
   Ember.typeOf(null);                   // 'null'
   Ember.typeOf(undefined);              // 'undefined'
@@ -1464,7 +1464,7 @@ Ember.inspect = function(obj) {
 
   Subscribe to a listener by using `Ember.subscribe`:
 
-  ```javascript
+  ```javascripts
   Ember.subscribe("render", {
     before: function(name, timestamp, payload) {
 
@@ -1482,7 +1482,7 @@ Ember.inspect = function(obj) {
 
   Instrument a block of code by using `Ember.instrument`:
 
-  ```javascript
+  ```javascripts
   Ember.instrument("render.handlebars", payload, function() {
     // rendering logic
   }, binding);
@@ -1742,7 +1742,7 @@ var utils = Ember.EnumerableUtils = {
    * Returns an array of indexes of the first occurrences of the passed elements
    * on the passed object.
    *
-   * ```javascript
+   * ```javascripts
    *  var array = [1, 2, 3, 4, 5];
    *  Ember.EnumerableUtils.indexesOf(array, [2, 5]); // [1, 4]
    *
@@ -1816,7 +1816,7 @@ var utils = Ember.EnumerableUtils = {
   /**
    * Replaces objects in an array with the passed objects.
    *
-   * ```javascript
+   * ```javascripts
    *   var array = [1,2,3];
    *   Ember.EnumerableUtils.replace(array, 1, 2, [4, 5]); // [1, 4, 5]
    *
@@ -1851,7 +1851,7 @@ var utils = Ember.EnumerableUtils = {
    * filled with the records that the two passed arrays share with each other. 
    * If there is no intersection, an empty array will be returned.
    *
-   * ```javascript
+   * ```javascripts
    * var array1 = [1, 2, 3, 4, 5];
    * var array2 = [1, 3, 5, 6, 7];
    *
@@ -2417,7 +2417,7 @@ function listenersFor(obj, eventName) {
   a specified event or events are triggered.
 
 
-  ``` javascript
+  ``` javascripts
   var Job = Ember.Object.extend({
     logCompleted: Ember.on('completed', function(){
       console.log('Job completed!');
@@ -2716,7 +2716,7 @@ Ember.endPropertyChanges = endPropertyChanges;
   Make a series of property changes together in an
   exception-safe way.
 
-  ```javascript
+  ```javascripts
   Ember.changeProperties(function() {
     obj1.set('foo', mayBlowUpWhenSet);
     obj2.set('bar', baz);
@@ -3325,7 +3325,7 @@ Ember.Logger = {
    Logs the arguments to the console.
    You can pass as many arguments as you want and they will be joined together with a space.
 
-    ```javascript
+    ```javascripts
     var foo = 1;
     Ember.Logger.log('log value of foo:', foo);
     // "log value of foo: 1" will be printed to the console
@@ -3341,7 +3341,7 @@ Ember.Logger = {
    Prints the arguments to the console with a warning icon.
    You can pass as many arguments as you want and they will be joined together with a space.
 
-    ```javascript
+    ```javascripts
     Ember.Logger.warn('Something happened!');
     // "Something happened!" will be printed to the console with a warning icon.
     ```
@@ -3356,7 +3356,7 @@ Ember.Logger = {
    Prints the arguments to the console with an error icon, red text and a stack trace.
    You can pass as many arguments as you want and they will be joined together with a space.
 
-    ```javascript
+    ```javascripts
     Ember.Logger.error('Danger! Danger!');
     // "Danger! Danger!" will be printed to the console in red text.
     ```
@@ -3371,7 +3371,7 @@ Ember.Logger = {
    Logs the arguments to the console.
    You can pass as many arguments as you want and they will be joined together with a space.
 
-    ```javascript
+    ```javascripts
     var foo = 1;
     Ember.Logger.info('log value of foo:', foo);
     // "log value of foo: 1" will be printed to the console
@@ -3387,7 +3387,7 @@ Ember.Logger = {
    Logs the arguments to the console in blue text.
    You can pass as many arguments as you want and they will be joined together with a space.
 
-    ```javascript
+    ```javascripts
     var foo = 1;
     Ember.Logger.debug('log value of foo:', foo);
     // "log value of foo: 1" will be printed to the console
@@ -3402,7 +3402,7 @@ Ember.Logger = {
   /**
    If the value passed into `Ember.Logger.assert` is not truthy it will throw an error with a stack trace.
 
-    ```javascript
+    ```javascripts
     Ember.Logger.assert(true); // undefined
     Ember.Logger.assert(true === false); // Throws an Assertion failed error.
     ```
@@ -3477,7 +3477,7 @@ var DEFAULT_GETTER_FUNCTION = Ember.DEFAULT_GETTER_FUNCTION = function(name) {
 
   ## Examples
 
-  ```javascript
+  ```javascripts
   // ES5 compatible mode
   Ember.defineProperty(contact, 'firstName', {
     writable: true,
@@ -3601,14 +3601,14 @@ var get = Ember.get;
   To get multiple properties at once, call `Ember.getProperties`
   with an object followed by a list of strings or an array:
 
-  ```javascript
+  ```javascripts
   Ember.getProperties(record, 'firstName', 'lastName', 'zipCode');
   // { firstName: 'John', lastName: 'Doe', zipCode: '10011' }
   ```
 
   is equivalent to:
 
-  ```javascript
+  ```javascripts
   Ember.getProperties(record, ['firstName', 'lastName', 'zipCode']);
   // { firstName: 'John', lastName: 'Doe', zipCode: '10011' }
   ```
@@ -3646,7 +3646,7 @@ var changeProperties = Ember.changeProperties,
   a single `beginPropertyChanges` and `endPropertyChanges` batch, so
   observers will be buffered.
 
-  ```javascript
+  ```javascripts
   anObject.setProperties({
     firstName: "Stanley",
     lastName: "Stuart",
@@ -4418,7 +4418,7 @@ function removeDependentKeys(desc, obj, keyName, meta) {
   any future calls (or anything bound) to fullName will incorporate the new
   values.
 
-  ```javascript
+  ```javascripts
   Person = Ember.Object.extend({
     // these will be supplied by `create`
     firstName: null,
@@ -4445,7 +4445,7 @@ function removeDependentKeys(desc, obj, keyName, meta) {
   value you want to set it to. You can also accept the previous value as the
   third parameter.
 
-  ```javascript
+  ```javascripts
 
  Person = Ember.Object.extend({
     // these will be supplied by `create`
@@ -4540,7 +4540,7 @@ ComputedPropertyPrototype.cacheable = function(aFlag) {
   Call on a computed property to set it into non-cached mode. When in this
   mode the computed property will not automatically cache the return value.
 
-  ```javascript
+  ```javascripts
   MyApp.outsideService = Ember.Object.extend({
     value: function() {
       return OutsideService.getValue();
@@ -4560,7 +4560,7 @@ ComputedPropertyPrototype.volatile = function() {
   Call on a computed property to set it into read-only mode. When in this
   mode the computed property will throw an error when set.
 
-  ```javascript
+  ```javascripts
   MyApp.Person = Ember.Object.extend({
     guid: function() {
       return 'guid-guid-guid';
@@ -4585,7 +4585,7 @@ ComputedPropertyPrototype.readOnly = function(readOnly) {
   Sets the dependent keys on this computed property. Pass any number of
   arguments containing key paths that this computed property depends on.
 
-  ```javascript
+  ```javascripts
   MyApp.President = Ember.Object.extend({
     fullName: Ember.computed(function() {
       return this.get('firstName') + ' ' + this.get('lastName');
@@ -4687,7 +4687,7 @@ function finishChains(chainNodes)
   If this property has already been cached, return the cached result.
   Otherwise, call the function passing the property name as an argument.
 
-  ```javascript
+  ```javascripts
   Person = Ember.Object.extend({
     fullName: function(keyName) {
       // the keyName parameter is 'fullName' in this case.
@@ -4995,7 +4995,7 @@ if (Ember.FEATURES.isEnabled('composable-computed-properties')) {
 
     Example
 
-    ```javascript
+    ```javascripts
     var ToDoList = Ember.Object.extend({
       done: Ember.computed.empty('todos.[]') // detect array changes
     });
@@ -5026,7 +5026,7 @@ if (Ember.FEATURES.isEnabled('composable-computed-properties')) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     hasStuff: Ember.computed.notEmpty('backpack.[]')
   });
@@ -5053,7 +5053,7 @@ registerComputed('notEmpty', function(dependentKey) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     isHungry: Ember.computed.none('food')
   });
@@ -5081,7 +5081,7 @@ registerComputed('none', function(dependentKey) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var User = Ember.Object.extend({
     isAnonymous: Ember.computed.not('loggedIn')
   });
@@ -5105,7 +5105,7 @@ registerComputed('not', function(dependentKey) {
   A computed property that converts the provided dependent property
   into a boolean value.
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     hasBananas: Ember.computed.bool('numBananas')
   });
@@ -5136,7 +5136,7 @@ registerComputed('bool', function(dependentKey) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var User = Ember.Object.extend({
     hasValidEmail: Ember.computed.match('email', /^.+@.+\..+$/)
   });
@@ -5166,7 +5166,7 @@ registerComputed('match', function(dependentKey, regexp) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     napTime: Ember.computed.equal('state', 'sleepy')
   });
@@ -5195,7 +5195,7 @@ registerComputed('equal', function(dependentKey, value) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     hasTooManyBananas: Ember.computed.gt('numBananas', 10)
   });
@@ -5224,7 +5224,7 @@ registerComputed('gt', function(dependentKey, value) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     hasTooManyBananas: Ember.computed.gte('numBananas', 10)
   });
@@ -5253,7 +5253,7 @@ registerComputed('gte', function(dependentKey, value) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     needsMoreBananas: Ember.computed.lt('numBananas', 3)
   });
@@ -5282,7 +5282,7 @@ registerComputed('lt', function(dependentKey, value) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     needsMoreBananas: Ember.computed.lte('numBananas', 3)
   });
@@ -5311,7 +5311,7 @@ registerComputed('lte', function(dependentKey, value) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     readyForCamp: Ember.computed.and('hasTent', 'hasBackpack')
   });
@@ -5344,7 +5344,7 @@ registerComputedWithProperties('and', function(properties) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     readyForRain: Ember.computed.or('hasJacket', 'hasUmbrella')
   });
@@ -5375,7 +5375,7 @@ registerComputedWithProperties('or', function(properties) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     hasClothes: Ember.computed.any('hat', 'shirt')
   });
@@ -5406,7 +5406,7 @@ registerComputedWithProperties('any', function(properties) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     clothes: Ember.computed.collect('hat', 'shirt')
   });
@@ -5442,7 +5442,7 @@ registerComputedWithProperties('collect', function(properties) {
   on an object. Calls to `get` or `set` this property behave as
   though they were called on the original property.
 
-  ```javascript
+  ```javascripts
   Person = Ember.Object.extend({
     name: 'Alex Matchneer',
     nomen: Ember.computed.alias('name')
@@ -5481,7 +5481,7 @@ Ember.computed.alias = function(dependentKey) {
 
   Example
 
-  ```javascript
+  ```javascripts
   User = Ember.Object.extend({
     firstName: null,
     lastName: null,
@@ -5526,7 +5526,7 @@ Ember.computed.oneWay = function(dependentKey) {
 
   Example
 
-  ```javascript
+  ```javascripts
   User = Ember.Object.extend({
     firstName: null,
     lastName: null,
@@ -5568,7 +5568,7 @@ Ember.computed.readOnly = function(dependentKey) {
 
   Example
 
-  ```javascript
+  ```javascripts
   var Hamster = Ember.Object.extend({
     wishList: Ember.computed.defaultTo('favoriteFood')
   });
@@ -6407,7 +6407,7 @@ var Backburner = requireModule('backburner').Backburner,
   libraries or plugins, you should probably wrap all of your code inside this
   call.
 
-  ```javascript
+  ```javascripts
   Ember.run(function() {
     // code to be execute within a RunLoop
   });
@@ -6448,7 +6448,7 @@ function onerror(args) {
 
   If invoked when not within a run loop:
 
-  ```javascript
+  ```javascripts
   Ember.run.join(function() {
     // creates a new run-loop
   });
@@ -6456,7 +6456,7 @@ function onerror(args) {
 
   Alternatively, if called within an existing run loop:
 
-  ```javascript
+  ```javascripts
   Ember.run(function() {
     // creates a new run-loop
     Ember.run.join(function() {
@@ -6500,7 +6500,7 @@ Ember.run.join = function(target, method /* args */) {
   For example, the following is rather verbose but is the correct way to combine
   third-party events and Ember code.
 
-  ```javascript
+  ```javascripts
   var that = this;
   jQuery(window).on('resize', function(){
     Ember.run(function(){
@@ -6512,7 +6512,7 @@ Ember.run.join = function(target, method /* args */) {
   To reduce the boilerplate, the following can be used to construct a
   run-loop-wrapped callback handler.
 
-  ```javascript
+  ```javascripts
   jQuery(window).on('resize', Ember.run.bind(this, this.handleResize));
   ```
 
@@ -6546,7 +6546,7 @@ Ember.run.queues = backburner.queueNames;
   be buffered until you invoke a matching call to `Ember.run.end()`. This is
   a lower-level way to use a RunLoop instead of using `Ember.run()`.
 
-  ```javascript
+  ```javascripts
   Ember.run.begin();
   // code to be execute within a RunLoop
   Ember.run.end();
@@ -6564,7 +6564,7 @@ Ember.run.begin = function() {
   `Ember.run.begin()` to flush any deferred actions. This is a lower-level way
   to use a RunLoop instead of using `Ember.run()`.
 
-  ```javascript
+  ```javascripts
   Ember.run.begin();
   // code to be execute within a RunLoop
   Ember.run.end();
@@ -6598,7 +6598,7 @@ Ember.run.end = function() {
   Methods will be invoked in an order matching the named queues defined in
   the `Ember.run.queues` property.
 
-  ```javascript
+  ```javascripts
   Ember.run.schedule('sync', this, function() {
     // this will be executed in the first RunLoop queue, when bindings are synced
     console.log("scheduled on sync queue");
@@ -6649,7 +6649,7 @@ Ember.run.cancelTimers = function () {
   throughout the app immediately without repainting the UI (which happens
   in the later 'render' queue added by the `ember-views` package).
 
-  ```javascript
+  ```javascripts
   Ember.run.sync();
   ```
 
@@ -6672,7 +6672,7 @@ Ember.run.sync = function() {
   items that expire during the same script execution cycle all execute
   together, which is often more efficient than using a real setTimeout.
 
-  ```javascript
+  ```javascripts
   Ember.run.later(myContext, function() {
     // code here will execute within a RunLoop in about 500ms with this == myContext
   }, 500);
@@ -6720,7 +6720,7 @@ Ember.run.once = function(target, method) {
   considered when looking for duplicates. New arguments will replace previous
   calls.
 
-  ```javascript
+  ```javascripts
   Ember.run(function() {
     var sayHi = function() { console.log('hi'); }
     Ember.run.scheduleOnce('afterRender', myContext, sayHi);
@@ -6733,7 +6733,7 @@ Ember.run.once = function(target, method) {
   not prevent additional calls with an identical anonymous function from
   scheduling the items multiple times, e.g.:
 
-  ```javascript
+  ```javascripts
   function scheduleIt() {
     Ember.run.scheduleOnce('actions', myContext, function() { console.log("Closure"); });
   }
@@ -6765,7 +6765,7 @@ Ember.run.scheduleOnce = function(queue, target, method) {
   control has been returned to the system. This is equivalent to calling
   `Ember.run.later` with a wait time of 1ms.
 
-  ```javascript
+  ```javascripts
   Ember.run.next(myContext, function() {
     // code to be executed in the next run loop,
     // which will be scheduled after the current one
@@ -6784,7 +6784,7 @@ Ember.run.scheduleOnce = function(queue, target, method) {
   by the `ember-views` package, along with the preceding `render` queue
   where all the DOM element operations happen). Example:
 
-  ```javascript
+  ```javascripts
   App.MyCollectionView = Ember.CollectionView.extend({
     didInsertElement: function() {
       Ember.run.scheduleOnce('afterRender', this, 'processChildElements');
@@ -6829,7 +6829,7 @@ Ember.run.next = function() {
   `Ember.run.once()`, `Ember.run.next()`, `Ember.run.debounce()`, or
   `Ember.run.throttle()`.
 
-  ```javascript
+  ```javascripts
   var runNext = Ember.run.next(myContext, function() {
     // will not be executed
   });
@@ -6881,7 +6881,7 @@ Ember.run.cancel = function(timer) {
   A common example is for scroll events where you only want updates to
   happen once scrolling has ceased.
 
-  ```javascript
+  ```javascripts
     var myFunc = function() { console.log(this.name + ' ran.'); };
     var myContext = {name: 'debounce'};
 
@@ -6902,7 +6902,7 @@ Ember.run.cancel = function(timer) {
   the timer is reset and the entire period must pass again before
   the method can be called again.
 
-  ```javascript
+  ```javascripts
     var myFunc = function() { console.log(this.name + ' ran.'); };
     var myContext = {name: 'debounce'};
 
@@ -6943,7 +6943,7 @@ Ember.run.debounce = function() {
   Ensure that the target method is never called more frequently than
   the specified spacing period.
 
-  ```javascript
+  ```javascripts
     var myFunc = function() { console.log(this.name + ' ran.'); };
     var myContext = {name: 'throttle'};
 
@@ -7374,7 +7374,7 @@ mixinProperties(Binding, {
   examples above, during init, Ember objects will effectively call
   something like this on your binding:
 
-  ```javascript
+  ```javascripts
   binding = Ember.Binding.from(this.valueBinding).to("value");
   ```
 
@@ -7383,7 +7383,7 @@ mixinProperties(Binding, {
   binding is fully configured with a `from` and a `to`, it simply needs to be
   connected to become active. This is done through the `connect()` method:
 
-  ```javascript
+  ```javascripts
   binding.connect(this);
   ```
 
@@ -7400,14 +7400,14 @@ mixinProperties(Binding, {
   using the `Ember.bind()` helper method. (This is the same method used by
   to setup your bindings on objects):
 
-  ```javascript
+  ```javascripts
   Ember.bind(MyApp.anotherObject, "value", "MyApp.someController.value");
   ```
 
   Both of these code fragments have the same effect as doing the most friendly
   form of binding creation like so:
 
-  ```javascript
+  ```javascripts
   MyApp.anotherObject = Ember.Object.create({
     valueBinding: "MyApp.someController.value",
 
@@ -7846,7 +7846,7 @@ Ember.mixin = function(obj) {
   The `Ember.Mixin` class allows you to create mixins, whose properties can be
   added to other classes. For instance,
 
-  ```javascript
+  ```javascripts
   App.Editable = Ember.Mixin.create({
     edit: function() {
       console.log('starting to edit');
@@ -7873,7 +7873,7 @@ Ember.mixin = function(obj) {
   If you want to define a property in a mixin that is not shared, you can define
   it either as a computed property or have it be created on initialization of the object.
 
-  ```javascript
+  ```javascripts
   //filters array will be shared amongst any object implementing mixin
   App.Filterable = Ember.Mixin.create({
     filters: Ember.A()
@@ -8074,7 +8074,7 @@ Alias.prototype = new Ember.Descriptor();
 /**
   Makes a method available via an additional name.
 
-  ```javascript
+  ```javascripts
   App.Person = Ember.Object.extend({
     name: function() {
       return 'Tomhuda Katzdale';
@@ -8101,7 +8101,7 @@ Ember.aliasMethod = function(methodName) {
 /**
   Specify a method that observes property changes.
 
-  ```javascript
+  ```javascripts
   Ember.Object.extend({
     valueObserver: Ember.observer('value', function() {
       // Executes whenever the "value" property changes
@@ -8152,7 +8152,7 @@ Ember.observer = function() {
 /**
   Specify a method that observes property changes.
 
-  ```javascript
+  ```javascripts
   Ember.Object.extend({
     valueObserver: Ember.immediateObserver('value', function() {
       // Executes whenever the "value" property changes
@@ -8190,7 +8190,7 @@ Ember.immediateObserver = function() {
 
   A `beforeObserver` is an alternative form of `.observesBefore()`.
 
-  ```javascript
+  ```javascripts
   App.PersonView = Ember.View.extend({
 
     friends: [{ name: 'Tom' }, { name: 'Stefan' }, { name: 'Kris' }],
@@ -8362,7 +8362,7 @@ define("rsvp/all_settled",
       provide the corresponding value or reason. The states will take one of
       the following formats:
 
-      ```javascript
+      ```javascripts
       { state: 'fulfilled', value: value }
         or
       { state: 'rejected', reason: reason }
@@ -8370,7 +8370,7 @@ define("rsvp/all_settled",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var promise1 = RSVP.Promise.resolve(1);
       var promise2 = RSVP.Promise.reject(new Error('2'));
       var promise3 = RSVP.Promise.reject(new Error('3'));
@@ -8507,7 +8507,7 @@ define("rsvp/defer",
 
       Example:
 
-       ```javascript
+       ```javascripts
        var deferred = RSVP.defer();
 
        deferred.resolve("Success!");
@@ -8566,7 +8566,7 @@ define("rsvp/events",
         `RSVP.EventTarget.mixin` extends an object with EventTarget methods. For
         Example:
 
-        ```javascript
+        ```javascripts
         var object = {};
 
         RSVP.EventTarget.mixin(object);
@@ -8580,7 +8580,7 @@ define("rsvp/events",
 
         `EventTarget.mixin` also works with prototypes:
 
-        ```javascript
+        ```javascripts
         var Person = function() {};
         RSVP.EventTarget.mixin(Person.prototype);
 
@@ -8614,7 +8614,7 @@ define("rsvp/events",
       /**
         Registers a callback to be executed when `eventName` is triggered
 
-        ```javascript
+        ```javascripts
         object.on('event', function(eventInfo){
           // handle the event
         });
@@ -8644,7 +8644,7 @@ define("rsvp/events",
       /**
         You can use `off` to stop firing a particular callback for an event:
 
-        ```javascript
+        ```javascripts
         function doStuff() { // do stuff! }
         object.on('stuff', doStuff);
 
@@ -8658,7 +8658,7 @@ define("rsvp/events",
         If you don't pass a `callback` argument to `off`, ALL callbacks for the
         event will not be executed when the event fires. For example:
 
-        ```javascript
+        ```javascripts
         var callback1 = function(){};
         var callback2 = function(){};
 
@@ -8698,7 +8698,7 @@ define("rsvp/events",
       /**
         Use `trigger` to fire custom events. For example:
 
-        ```javascript
+        ```javascripts
         object.on('foo', function(){
           console.log('foo event happened!');
         });
@@ -8709,7 +8709,7 @@ define("rsvp/events",
         You can also pass a value as a second argument to `trigger` that will be
         passed as an argument to all event listeners for the event:
 
-        ```javascript
+        ```javascripts
         object.on('foo', function(value){
           console.log(value.name);
         });
@@ -8757,7 +8757,7 @@ define("rsvp/filter",
 
       For example:
 
-      ```javascript
+      ```javascripts
 
       var promise1 = RSVP.resolve(1);
       var promise2 = RSVP.resolve(2);
@@ -8776,7 +8776,7 @@ define("rsvp/filter",
       that is rejected will be given as an argument to the returned promise's
       rejection handler. For example:
 
-      ```javascript
+      ```javascripts
       var promise1 = RSVP.resolve(1);
       var promise2 = RSVP.reject(new Error("2"));
       var promise3 = RSVP.reject(new Error("3"));
@@ -8797,7 +8797,7 @@ define("rsvp/filter",
       For instance, you may want to fetch a list of users then return a subset
       of those users based on some asynchronous operation:
 
-      ```javascript
+      ```javascripts
 
       var alice = { name: 'alice' };
       var bob   = { name: 'bob' };
@@ -8875,7 +8875,7 @@ define("rsvp/hash",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var promises = {
         myPromise: RSVP.resolve(1),
         yourPromise: RSVP.resolve(2),
@@ -8899,7 +8899,7 @@ define("rsvp/hash",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var promises = {
         myPromise: RSVP.resolve(1),
         rejectedPromise: RSVP.reject(new Error("rejectedPromise")),
@@ -8919,7 +8919,7 @@ define("rsvp/hash",
 
       Example:
 
-      ```javascript
+      ```javascripts
       function MyConstructor(){
         this.example = RSVP.resolve("Example");
       }
@@ -9037,7 +9037,7 @@ define("rsvp/map",
 
       For example:
 
-      ```javascript
+      ```javascripts
 
       var promise1 = RSVP.resolve(1);
       var promise2 = RSVP.resolve(2);
@@ -9057,7 +9057,7 @@ define("rsvp/map",
       that is rejected will be given as an argument to the returned promise's
       rejection handler. For example:
 
-      ```javascript
+      ```javascripts
       var promise1 = RSVP.resolve(1);
       var promise2 = RSVP.reject(new Error("2"));
       var promise3 = RSVP.reject(new Error("3"));
@@ -9154,7 +9154,7 @@ define("rsvp/node",
       browser when you'd prefer to use promises over using callbacks. For example,
       `denodeify` transforms the following:
 
-      ```javascript
+      ```javascripts
       var fs = require('fs');
 
       fs.readFile('myfile.txt', function(err, data){
@@ -9165,7 +9165,7 @@ define("rsvp/node",
 
       into:
 
-      ```javascript
+      ```javascripts
       var fs = require('fs');
 
       var readFile = RSVP.denodeify(fs.readFile);
@@ -9176,7 +9176,7 @@ define("rsvp/node",
       Using `denodeify` makes it easier to compose asynchronous operations instead
       of using callbacks. For example, instead of:
 
-      ```javascript
+      ```javascripts
       var fs = require('fs');
       var log = require('some-async-logger');
 
@@ -9193,7 +9193,7 @@ define("rsvp/node",
 
       You can chain the operations together using `then` from the returned promise:
 
-      ```javascript
+      ```javascripts
       var fs = require('fs');
       var denodeify = RSVP.denodeify;
       var readFile = denodeify(fs.readFile);
@@ -9548,7 +9548,7 @@ define("rsvp/promise",
 
       Synchronous Example
 
-      ```javascript
+      ```javascripts
       var result;
 
       try {
@@ -9573,7 +9573,7 @@ define("rsvp/promise",
 
       Promise Example;
 
-      ```javascript
+      ```javascripts
       findResult().then(function(result){
         // success
       }, function(reason){
@@ -9586,7 +9586,7 @@ define("rsvp/promise",
 
       Synchronous Example
 
-      ```javascript
+      ```javascripts
       var author, books;
 
       try {
@@ -9637,7 +9637,7 @@ define("rsvp/promise",
 
       Promise Example;
 
-      ```javascript
+      ```javascripts
       findAuthor().
         then(findBooksByAuthor).
         then(function(books){
@@ -9885,7 +9885,7 @@ define("rsvp/promise/all",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var promise1 = RSVP.resolve(1);
       var promise2 = RSVP.resolve(2);
       var promise3 = RSVP.resolve(3);
@@ -9902,7 +9902,7 @@ define("rsvp/promise/all",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var promise1 = RSVP.resolve(1);
       var promise2 = RSVP.reject(new Error("2"));
       var promise3 = RSVP.reject(new Error("3"));
@@ -9981,7 +9981,7 @@ define("rsvp/promise/cast",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var promise = RSVP.Promise.resolve(1);
       var casted = RSVP.Promise.cast(promise);
 
@@ -9994,7 +9994,7 @@ define("rsvp/promise/cast",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var thennable = $.getJSON('/api/foo');
       var casted = RSVP.Promise.cast(thennable);
 
@@ -10011,7 +10011,7 @@ define("rsvp/promise/cast",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var value = 1; // could be a number, boolean, string, undefined...
       var casted = RSVP.Promise.cast(value);
 
@@ -10071,7 +10071,7 @@ define("rsvp/promise/race",
 
       Example:
 
-      ```javascript
+      ```javascripts
       var promise1 = new RSVP.Promise(function(resolve, reject){
         setTimeout(function(){
           resolve("promise 1");
@@ -10096,7 +10096,7 @@ define("rsvp/promise/race",
       become rejected before the other promises became fulfilled, the returned
       promise will become rejected:
 
-      ```javascript
+      ```javascripts
       var promise1 = new RSVP.Promise(function(resolve, reject){
         setTimeout(function(){
           resolve("promise 1");
@@ -10119,7 +10119,7 @@ define("rsvp/promise/race",
 
       An example real-world use case is implementing timeouts:
 
-      ```javascript
+      ```javascripts
       RSVP.Promise.race([ajax('foo.json'), timeout(5000)])
       ```
 
@@ -10166,7 +10166,7 @@ define("rsvp/promise/reject",
       `RSVP.Promise.reject` returns a promise rejected with the passed `reason`.
       It is shorthand for the following:
 
-      ```javascript
+      ```javascripts
       var promise = new RSVP.Promise(function(resolve, reject){
         reject(new Error('WHOOPS'));
       });
@@ -10180,7 +10180,7 @@ define("rsvp/promise/reject",
 
       Instead of writing the above, your code now simply becomes the following:
 
-      ```javascript
+      ```javascripts
       var promise = RSVP.Promise.reject(new Error('WHOOPS'));
 
       promise.then(function(value){
@@ -10214,7 +10214,7 @@ define("rsvp/promise/resolve",
       `RSVP.Promise.resolve` returns a promise that will become resolved with the
       passed `value`. It is shorthand for the following:
 
-      ```javascript
+      ```javascripts
       var promise = new RSVP.Promise(function(resolve, reject){
         resolve(1);
       });
@@ -10226,7 +10226,7 @@ define("rsvp/promise/resolve",
 
       Instead of writing the above, your code now simply becomes the following:
 
-      ```javascript
+      ```javascripts
       var promise = RSVP.Promise.resolve(1);
 
       promise.then(function(value){
@@ -10329,7 +10329,7 @@ define("rsvp/rethrow",
       or domain/cause uncaught exception in Node. `rethrow` will also throw the
       error again so the error can be handled by the promise per the spec.
 
-      ```javascript
+      ```javascripts
       function throws(){
         throw new Error('Whoops!');
       }
@@ -10588,7 +10588,7 @@ define("container/container",
 
         Example:
 
-        ```javascript
+        ```javascripts
         var container = new Container();
 
         container.register('model:user', Person, {singleton: false });
@@ -10621,7 +10621,7 @@ define("container/container",
       /**
         Unregister a fullName
 
-        ```javascript
+        ```javascripts
         var container = new Container();
         container.register('model:user', User);
 
@@ -10652,7 +10652,7 @@ define("container/container",
         By default `resolve` will retrieve the factory from
         its container's registry.
 
-        ```javascript
+        ```javascripts
         var container = new Container();
         container.register('api:twitter', Twitter);
 
@@ -10664,7 +10664,7 @@ define("container/container",
         the oppertunity to resolve the fullName, otherwise it will fallback
         to the registry.
 
-        ```javascript
+        ```javascripts
         var container = new Container();
         container.resolver = function(fullName) {
           // lookup via the module system of choice
@@ -10738,7 +10738,7 @@ define("container/container",
         The singleton is scoped to the container, allowing multiple containers
         to all have their own locally scoped singletons.
 
-        ```javascript
+        ```javascripts
         var container = new Container();
         container.register('api:twitter', Twitter);
 
@@ -10755,7 +10755,7 @@ define("container/container",
 
         If singletons are not wanted an optional flag can be provided at lookup.
 
-        ```javascript
+        ```javascripts
         var container = new Container();
         container.register('api:twitter', Twitter);
 
@@ -10803,7 +10803,7 @@ define("container/container",
       /**
         Allow registering options for all factories of a type.
 
-        ```javascript
+        ```javascripts
         var container = new Container();
 
         // if all of type `connection` must not be singletons
@@ -10852,7 +10852,7 @@ define("container/container",
         For example, provided each object of type `controller` needed a `router`.
         one would do the following:
 
-        ```javascript
+        ```javascripts
         var container = new Container();
 
         container.register('router:main', Router);
@@ -10897,7 +10897,7 @@ define("container/container",
 
         Example:
 
-        ```javascript
+        ```javascripts
         var container = new Container();
 
         container.register('source:main', Source);
@@ -10955,7 +10955,7 @@ define("container/container",
         For example, provided each factory of type `model` needed a `store`.
         one would do the following:
 
-        ```javascript
+        ```javascripts
         var container = new Container();
 
         container.register('store:main', SomeStore);
@@ -10996,7 +10996,7 @@ define("container/container",
 
         Example:
 
-        ```javascript
+        ```javascripts
         var container = new Container();
 
         container.register('store:main', Store);
@@ -11423,7 +11423,7 @@ define("container",
 var indexOf = Ember.EnumerableUtils.indexOf;
 
 /**
- This will compare two javascript values of possibly different types.
+ This will compare two javascripts values of possibly different types.
  It will tell you which one is greater than the other by returning:
 
   - -1 if the first is smaller than the second,
@@ -11433,7 +11433,7 @@ var indexOf = Ember.EnumerableUtils.indexOf;
  The order is calculated based on `Ember.ORDER_DEFINITION`, if types are different.
  In case they have the same type an appropriate comparison for this type is made.
 
-  ```javascript
+  ```javascripts
   Ember.compare('hello', 'hello');  // 0
   Ember.compare('abc', 'dfg');      // -1
   Ember.compare(2, 1);              // 1
@@ -11604,7 +11604,7 @@ Ember.copy = function(obj, deep) {
   internal objects. For any other object that implements `isEqual()` it will
   respect that method.
 
-  ```javascript
+  ```javascripts
   Ember.isEqual('hello', 'hello');  // true
   Ember.isEqual(1, 2);              // false
   Ember.isEqual([4,2], [4,2]);      // false
@@ -11739,7 +11739,7 @@ Ember.String = {
     Ordered insertions are most useful when building loc strings where values
     you need to insert may appear in different orders.
 
-    ```javascript
+    ```javascripts
     "Hello %@ %@".fmt('John', 'Doe');     // "Hello John Doe"
     "Hello %@2, %@1".fmt('John', 'Doe');  // "Hello Doe, John"
     ```
@@ -11768,7 +11768,7 @@ Ember.String = {
     keys with an underscore or other character so you can easily identify
     localized strings.
 
-    ```javascript
+    ```javascripts
     Ember.STRINGS = {
       '_Hello World': 'Bonjour le monde',
       '_Hello %@ %@': 'Bonjour %@ %@'
@@ -11793,7 +11793,7 @@ Ember.String = {
     empty strings in the process. This is a convenience method for split that
     is mostly useful when applied to the `String.prototype`.
 
-    ```javascript
+    ```javascripts
     Ember.String.w("alpha beta gamma").forEach(function(key) {
       console.log(key);
     });
@@ -11812,7 +11812,7 @@ Ember.String = {
   /**
     Converts a camelized string into all lower case separated by underscores.
 
-    ```javascript
+    ```javascripts
     'innerHTML'.decamelize();           // 'inner_html'
     'action_name'.decamelize();        // 'action_name'
     'css-class-name'.decamelize();     // 'css-class-name'
@@ -11830,7 +11830,7 @@ Ember.String = {
   /**
     Replaces underscores, spaces, or camelCase with dashes.
 
-    ```javascript
+    ```javascripts
     'innerHTML'.dasherize();          // 'inner-html'
     'action_name'.dasherize();        // 'action-name'
     'css-class-name'.dasherize();     // 'css-class-name'
@@ -11859,7 +11859,7 @@ Ember.String = {
   /**
     Returns the lowerCamelCase form of a string.
 
-    ```javascript
+    ```javascripts
     'innerHTML'.camelize();          // 'innerHTML'
     'action_name'.camelize();        // 'actionName'
     'css-class-name'.camelize();     // 'cssClassName'
@@ -11882,7 +11882,7 @@ Ember.String = {
   /**
     Returns the UpperCamelCase form of a string.
 
-    ```javascript
+    ```javascripts
     'innerHTML'.classify();          // 'InnerHTML'
     'action_name'.classify();        // 'ActionName'
     'css-class-name'.classify();     // 'CssClassName'
@@ -11909,7 +11909,7 @@ Ember.String = {
     More general than decamelize. Returns the lower\_case\_and\_underscored
     form of a string.
 
-    ```javascript
+    ```javascripts
     'innerHTML'.underscore();          // 'inner_html'
     'action_name'.underscore();        // 'action_name'
     'css-class-name'.underscore();     // 'css_class_name'
@@ -11928,7 +11928,7 @@ Ember.String = {
   /**
     Returns the Capitalized form of a string
 
-    ```javascript
+    ```javascripts
     'innerHTML'.capitalize()         // 'InnerHTML'
     'action_name'.capitalize()       // 'Action_name'
     'css-class-name'.capitalize()    // 'Css-class-name'
@@ -12108,7 +12108,7 @@ var get = Ember.get,
   call to the end of your method declarations in classes that you write.
   For example:
 
-  ```javascript
+  ```javascripts
   Ember.Object.extend({
     valueObserver: function() {
       // Executes whenever the "value" property changes
@@ -12124,7 +12124,7 @@ var get = Ember.get,
 
   To add an observer for a property, call:
 
-  ```javascript
+  ```javascripts
   object.addObserver('propertyKey', targetObject, targetAction)
   ```
 
@@ -12157,7 +12157,7 @@ Ember.Observable = Ember.Mixin.create({
     Computed properties are methods defined with the `property` modifier
     declared at the end, such as:
 
-    ```javascript
+    ```javascripts
     fullName: function() {
       return this.get('firstName') + ' ' + this.get('lastName');
     }.property('firstName', 'lastName')
@@ -12187,13 +12187,13 @@ Ember.Observable = Ember.Mixin.create({
     To get multiple properties at once, call `getProperties`
     with a list of strings or an array:
 
-    ```javascript
+    ```javascripts
     record.getProperties('firstName', 'lastName', 'zipCode');  // { firstName: 'John', lastName: 'Doe', zipCode: '10011' }
     ```
 
     is equivalent to:
 
-    ```javascript
+    ```javascripts
     record.getProperties(['firstName', 'lastName', 'zipCode']);  // { firstName: 'John', lastName: 'Doe', zipCode: '10011' }
     ```
 
@@ -12244,7 +12244,7 @@ Ember.Observable = Ember.Mixin.create({
     In addition to property changes, `set()` returns the value of the object
     itself so you can do chaining like this:
 
-    ```javascript
+    ```javascripts
     record.set('firstName', 'Charles').set('lastName', 'Jolley');
     ```
 
@@ -12264,7 +12264,7 @@ Ember.Observable = Ember.Mixin.create({
     a single `beginPropertyChanges` and `endPropertyChanges` batch, so
     observers will be buffered.
 
-    ```javascript
+    ```javascripts
     record.setProperties({ firstName: 'Charles', lastName: 'Jolley' });
     ```
 
@@ -12398,7 +12398,7 @@ Ember.Observable = Ember.Mixin.create({
     Observer methods you pass should generally have the following signature if
     you do not pass a `context` parameter:
 
-    ```javascript
+    ```javascripts
     fooDidChange: function(sender, key, value, rev) { };
     ```
 
@@ -12410,7 +12410,7 @@ Ember.Observable = Ember.Mixin.create({
     If you pass a `context` parameter, the context will be passed before the
     revision like so:
 
-    ```javascript
+    ```javascripts
     fooDidChange: function(sender, key, value, context, rev) { };
     ```
 
@@ -12462,7 +12462,7 @@ Ember.Observable = Ember.Mixin.create({
     Retrieves the value of a property, or a default value in the case that the
     property returns `undefined`.
 
-    ```javascript
+    ```javascripts
     person.getWithDefault('lastName', 'Doe');
     ```
 
@@ -12478,7 +12478,7 @@ Ember.Observable = Ember.Mixin.create({
   /**
     Set the value of a property to the current value plus some amount.
 
-    ```javascript
+    ```javascripts
     person.incrementProperty('age');
     team.incrementProperty('score', 2);
     ```
@@ -12497,7 +12497,7 @@ Ember.Observable = Ember.Mixin.create({
   /**
     Set the value of a property to the current value minus some amount.
 
-    ```javascript
+    ```javascripts
     player.decrementProperty('lives');
     orc.decrementProperty('health', 5);
     ```
@@ -12517,7 +12517,7 @@ Ember.Observable = Ember.Mixin.create({
     Set the value of a boolean property to the opposite of it's
     current value.
 
-    ```javascript
+    ```javascripts
     starship.toggleProperty('warpDriveEngaged');
     ```
 
@@ -12742,7 +12742,7 @@ CoreObject.PrototypeMixin = Mixin.create({
 
     Example:
 
-    ```javascript
+    ```javascripts
     App.Person = Ember.Object.extend({
       init: function() {
         alert('Name is ' + this.get('name'));
@@ -12780,7 +12780,7 @@ CoreObject.PrototypeMixin = Mixin.create({
     Here is some sample code showing the difference between a concatenated
     property and a normal one:
 
-    ```javascript
+    ```javascripts
     App.BarView = Ember.View.extend({
       someNonConcatenatedProperty: ['bar'],
       classNames: ['bar']
@@ -12799,7 +12799,7 @@ CoreObject.PrototypeMixin = Mixin.create({
     This behavior extends to object creation as well. Continuing the
     above example:
 
-    ```javascript
+    ```javascripts
     var view = App.FooBarView.create({
       someNonConcatenatedProperty: ['baz'],
       classNames: ['baz']
@@ -12809,7 +12809,7 @@ CoreObject.PrototypeMixin = Mixin.create({
     ```
     Adding a single property that is not an array will just add it in the array:
 
-    ```javascript
+    ```javascripts
     var view = App.FooBarView.create({
       classNames: 'baz'
     })
@@ -12909,7 +12909,7 @@ CoreObject.PrototypeMixin = Mixin.create({
     than Javascript's `toString` typically does, in a generic way for all Ember
     objects.
 
-    ```javascript
+    ```javascripts
     App.Person = Em.Object.extend()
     person = App.Person.create()
     person.toString() //=> "<App.Person:ember1024>"
@@ -12918,7 +12918,7 @@ CoreObject.PrototypeMixin = Mixin.create({
     If the object's class is not defined on an Ember namespace, it will
     indicate it is a subclass of the registered superclass:
 
-   ```javascript
+   ```javascripts
     Student = App.Person.extend()
     student = Student.create()
     student.toString() //=> "<(subclass of App.Person):ember1025>"
@@ -12927,7 +12927,7 @@ CoreObject.PrototypeMixin = Mixin.create({
     If the method `toStringExtension` is defined, its return value will be
     included in the output.
 
-    ```javascript
+    ```javascripts
     App.Teacher = App.Person.extend({
       toStringExtension: function() {
         return this.get('fullName');
@@ -12974,7 +12974,7 @@ var ClassMixin = Mixin.create({
   /**
     Creates a new subclass.
 
-    ```javascript
+    ```javascripts
     App.Person = Ember.Object.extend({
       say: function(thing) {
         alert(thing);
@@ -12986,7 +12986,7 @@ var ClassMixin = Mixin.create({
 
     You can also create a subclass from any existing class by calling its `extend()`  method. For example, you might want to create a subclass of Ember's built-in `Ember.View` class:
 
-    ```javascript
+    ```javascripts
     App.PersonView = Ember.View.extend({
       tagName: 'li',
       classNameBindings: ['isAdministrator']
@@ -12995,7 +12995,7 @@ var ClassMixin = Mixin.create({
 
     When defining a subclass, you can override methods but still access the implementation of your parent class by calling the special `_super()` method:
 
-    ```javascript
+    ```javascripts
     App.Person = Ember.Object.extend({
       say: function(thing) {
         var name = this.get('name');
@@ -13023,7 +13023,7 @@ var ClassMixin = Mixin.create({
 
     You can also pass `Ember.Mixin` classes to add additional properties to the subclass.
 
-    ```javascript
+    ```javascripts
     App.Person = Ember.Object.extend({
       say: function(thing) {
         alert(this.get('name') + ' says: ' + thing);
@@ -13091,7 +13091,7 @@ var ClassMixin = Mixin.create({
     Creates an instance of a class. Accepts either no arguments, or an object
     containing values to initialize the newly instantiated object with.
 
-    ```javascript
+    ```javascripts
     App.Person = Ember.Object.extend({
       helloWorld: function() {
         alert("Hi, my name is " + this.get('name'));
@@ -13111,7 +13111,7 @@ var ClassMixin = Mixin.create({
     If no arguments are passed to `create`, it will not set values to the new
     instance during initialization:
 
-    ```javascript
+    ```javascripts
     var noName = App.Person.create();
     noName.helloWorld(); // alerts undefined
     ```
@@ -13134,7 +13134,7 @@ var ClassMixin = Mixin.create({
     Augments a constructor's prototype with additional
     properties and functions:
 
-    ```javascript
+    ```javascripts
     MyObject = Ember.Object.extend({
       name: 'an object'
     });
@@ -13168,7 +13168,7 @@ var ClassMixin = Mixin.create({
   /**
     Augments a constructor's own properties and functions:
 
-    ```javascript
+    ```javascripts
     MyObject = Ember.Object.extend({
       name: 'an object'
     });
@@ -13184,7 +13184,7 @@ var ClassMixin = Mixin.create({
     In other words, this creates static properties and functions for the class. These are only available on the class
     and not on any instance of that class.
 
-    ```javascript
+    ```javascripts
     App.Person = Ember.Object.extend({
       name : "",
       sayHello : function(){
@@ -13247,7 +13247,7 @@ var ClassMixin = Mixin.create({
 
     You can pass a hash of these values to a computed property like this:
 
-    ```javascript
+    ```javascripts
     person: function() {
       var personId = this.get('personId');
       return App.Person.create({ id: personId });
@@ -13257,7 +13257,7 @@ var ClassMixin = Mixin.create({
     Once you've done this, you can retrieve the values saved to the computed
     property from your class like this:
 
-    ```javascript
+    ```javascripts
     MyClass.metaForProperty('person');
     ```
 
@@ -13351,7 +13351,7 @@ var get = Ember.get, indexOf = Ember.ArrayPolyfills.indexOf;
 
   # Example Usage
 
-  ```javascript
+  ```javascripts
   MyFramework = Ember.Namespace.create({
     VERSION: '1.0.0'
   });
@@ -13578,7 +13578,7 @@ function contentPropertyDidChange(content, contentKey) {
   `Ember.ObjectProxy` forwards all properties not defined by the proxy itself
   to a proxied `content` object.
 
-  ```javascript
+  ```javascripts
   object = Ember.Object.create({
     name: 'Foo'
   });
@@ -13600,7 +13600,7 @@ function contentPropertyDidChange(content, contentKey) {
   While `content` is unset, setting a property to be delegated will throw an
   Error.
 
-  ```javascript
+  ```javascripts
   proxy = Ember.ObjectProxy.create({
     content: null,
     flag: null
@@ -13615,7 +13615,7 @@ function contentPropertyDidChange(content, contentKey) {
 
   Computed properties on the proxy itself can depend on delegated properties.
 
-  ```javascript
+  ```javascripts
   ProxyWithComputedProperty = Ember.ObjectProxy.extend({
     fullName: function () {
       var firstName = this.get('firstName'),
@@ -13814,7 +13814,7 @@ Ember.Enumerable = Ember.Mixin.create({
     contains only one object, this method should always return that object.
     If your enumerable is empty, this method should return `undefined`.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", "b", "c"];
     arr.get('firstObject');  // "a"
 
@@ -13840,7 +13840,7 @@ Ember.Enumerable = Ember.Mixin.create({
     contains only one object, this method should always return that object.
     If your enumerable is empty, this method should return `undefined`.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", "b", "c"];
     arr.get('lastObject');  // "c"
 
@@ -13868,7 +13868,7 @@ Ember.Enumerable = Ember.Mixin.create({
     default version will iterate through the enumerable until the object
     is found. You may want to override this with a more efficient version.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", "b", "c"];
     arr.contains("a"); // true
     arr.contains("z"); // false
@@ -13890,7 +13890,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -13958,7 +13958,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -14019,7 +14019,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -14054,7 +14054,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -14145,7 +14145,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -14219,7 +14219,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -14235,7 +14235,7 @@ Ember.Enumerable = Ember.Mixin.create({
 
     Example Usage:
 
-    ```javascript
+    ```javascripts
     if (people.every(isEngineer)) { Paychecks.addBigBonus(); }
     ```
 
@@ -14288,7 +14288,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -14305,7 +14305,7 @@ Ember.Enumerable = Ember.Mixin.create({
 
     Usage Example:
 
-    ```javascript
+    ```javascripts
     if (people.any(isManager)) { Paychecks.addBiggerBonus(); }
     ```
 
@@ -14341,7 +14341,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(item, index, enumerable);
     ```
 
@@ -14358,7 +14358,7 @@ Ember.Enumerable = Ember.Mixin.create({
 
     Usage Example:
 
-    ```javascript
+    ```javascripts
     if (people.some(isManager)) { Paychecks.addBiggerBonus(); }
     ```
 
@@ -14409,7 +14409,7 @@ Ember.Enumerable = Ember.Mixin.create({
     The callback method you provide should have the following signature (all
     parameters are optional):
 
-    ```javascript
+    ```javascripts
     function(previousValue, item, index, enumerable);
     ```
 
@@ -14486,7 +14486,7 @@ Ember.Enumerable = Ember.Mixin.create({
   /**
     Returns a copy of the array with all null and undefined elements removed.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", null, "c", undefined];
     arr.compact();  // ["a", "c"]
     ```
@@ -14503,7 +14503,7 @@ Ember.Enumerable = Ember.Mixin.create({
     implementation returns an array regardless of the receiver type unless
     the receiver does not contain the value.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", "b", "a", "c"];
     arr.without("a");  // ["b", "c"]
     ```
@@ -14525,7 +14525,7 @@ Ember.Enumerable = Ember.Mixin.create({
     Returns a new enumerable that contains only unique values. The default
     implementation returns an array regardless of the receiver type.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", "a", "b", "b"];
     arr.uniq();  // ["a", "b"]
     ```
@@ -14788,7 +14788,7 @@ Ember.Array = Ember.Mixin.create(Ember.Enumerable, {
     (i.e. `myArray.get(0)`), then you do not need to implement this method
     yourself.
 
-    ```javascript
+    ```javascripts
     var arr = ['a', 'b', 'c', 'd'];
     arr.objectAt(0);   // "a"
     arr.objectAt(3);   // "d"
@@ -14809,7 +14809,7 @@ Ember.Array = Ember.Mixin.create(Ember.Enumerable, {
   /**
     This returns the objects at the specified indexes, using `objectAt`.
 
-    ```javascript
+    ```javascripts
     var arr = ['a', 'b', 'c', 'd'];
     arr.objectsAt([0, 1, 2]);  // ["a", "b", "c"]
     arr.objectsAt([2, 3, 4]);  // ["c", "d", undefined]
@@ -14863,7 +14863,7 @@ Ember.Array = Ember.Mixin.create(Ember.Enumerable, {
     uses the observable array methods to retrieve the objects for the new
     slice.
 
-    ```javascript
+    ```javascripts
     var arr = ['red', 'green', 'blue'];
     arr.slice(0);       // ['red', 'green', 'blue']
     arr.slice(0, 2);    // ['red', 'green']
@@ -14896,7 +14896,7 @@ Ember.Array = Ember.Mixin.create(Ember.Enumerable, {
     search is 0. If it's negative, will count backward from
     the end of the array. Returns -1 if no match is found.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", "b", "c", "d", "a"];
     arr.indexOf("a");       //  0
     arr.indexOf("z");       // -1
@@ -14929,7 +14929,7 @@ Ember.Array = Ember.Mixin.create(Ember.Enumerable, {
     the last position. If it's negative, will count backward
     from the end of the array. Returns -1 if no match is found.
 
-    ```javascript
+    ```javascripts
     var arr = ["a", "b", "c", "d", "a"];
     arr.lastIndexOf("a");       //  4
     arr.lastIndexOf("z");       // -1
@@ -15794,7 +15794,7 @@ ReduceComputedProperty.prototype.property = function () {
 
   The `initialize` function has the following signature:
 
-  ```javascript
+  ```javascripts
    function (initialValue, changeMeta, instanceMeta)
   ```
 
@@ -15815,7 +15815,7 @@ ReduceComputedProperty.prototype.property = function () {
 
   The `removedItem` and `addedItem` functions both have the following signature:
 
-  ```javascript
+  ```javascripts
   function (accumulatedValue, item, changeMeta, instanceMeta)
   ```
 
@@ -15865,7 +15865,7 @@ ReduceComputedProperty.prototype.property = function () {
 
   Example
 
-  ```javascript
+  ```javascripts
   Ember.computed.max = function (dependentKey) {
     return Ember.reduceComputed(dependentKey, {
       initialValue: -Infinity,
@@ -15890,7 +15890,7 @@ ReduceComputedProperty.prototype.property = function () {
 
   Example
 
-  ```javascript
+  ```javascripts
   App.PeopleController = Ember.ArrayController.extend({
     itemController: 'person',
 
@@ -15923,7 +15923,7 @@ ReduceComputedProperty.prototype.property = function () {
 
   Example
 
-  ```javascript
+  ```javascripts
   Ember.Object.extend({
     // When `string` is changed, `computed` is completely recomputed.
     string: 'a string',
@@ -16048,7 +16048,7 @@ ArrayComputedProperty.prototype.didChange = function (obj, keyName) {
 
   The `initialize` function has the following signature:
 
-  ```javascript
+  ```javascripts
    function (array, changeMeta, instanceMeta)
   ```
 
@@ -16068,7 +16068,7 @@ ArrayComputedProperty.prototype.didChange = function (obj, keyName) {
 
   The `removedItem` and `addedItem` functions both have the following signature:
 
-  ```javascript
+  ```javascripts
   function (accumulatedValue, item, changeMeta, instanceMeta)
   ```
 
@@ -16112,7 +16112,7 @@ ArrayComputedProperty.prototype.didChange = function (obj, keyName) {
 
   Example
 
-  ```javascript
+  ```javascripts
   Ember.computed.map = function(dependentKey, callback) {
     var options = {
       addedItem: function(array, item, changeMeta, instanceMeta) {
@@ -16205,7 +16205,7 @@ Ember.computed.sum = function(dependentKey){
   dependent array. This will return `-Infinity` when the dependent
   array is empty.
 
-  ```javascript
+  ```javascripts
   App.Person = Ember.Object.extend({
     childAges: Ember.computed.mapBy('children', 'age'),
     maxChildAge: Ember.computed.max('childAges')
@@ -16253,7 +16253,7 @@ Ember.computed.max = function (dependentKey) {
   dependent array. This will return `Infinity` when the dependent
   array is empty.
 
-  ```javascript
+  ```javascripts
   App.Person = Ember.Object.extend({
     childAges: Ember.computed.mapBy('children', 'age'),
     minChildAge: Ember.computed.min('childAges')
@@ -16302,13 +16302,13 @@ Ember.computed.min = function (dependentKey) {
   The callback method you provide should have the following signature.
   `item` is the current item in the iteration.
 
-  ```javascript
+  ```javascripts
   function(item);
   ```
 
   Example
 
-  ```javascript
+  ```javascripts
   App.Hamster = Ember.Object.extend({
     excitingChores: Ember.computed.map('chores', function(chore) {
       return chore.toUpperCase() + '!';
@@ -16346,7 +16346,7 @@ Ember.computed.map = function(dependentKey, callback) {
 /**
   Returns an array mapped to the specified key.
 
-  ```javascript
+  ```javascripts
   App.Person = Ember.Object.extend({
     childAges: Ember.computed.mapBy('children', 'age')
   });
@@ -16391,11 +16391,11 @@ Ember.computed.mapProperty = Ember.computed.mapBy;
   The callback method you provide should have the following signature.
   `item` is the current item in the iteration.
 
-  ```javascript
+  ```javascripts
   function(item);
   ```
 
-  ```javascript
+  ```javascripts
   App.Hamster = Ember.Object.extend({
     remainingChores: Ember.computed.filter('chores', function(chore) {
       return !chore.done;
@@ -16450,7 +16450,7 @@ Ember.computed.filter = function(dependentKey, callback) {
 /**
   Filters the array by the property and value
 
-  ```javascript
+  ```javascripts
   App.Hamster = Ember.Object.extend({
     remainingChores: Ember.computed.filterBy('chores', 'done', false)
   });
@@ -16502,7 +16502,7 @@ Ember.computed.filterProperty = Ember.computed.filterBy;
 
   Example
 
-  ```javascript
+  ```javascripts
   App.Hamster = Ember.Object.extend({
     uniqueFruits: Ember.computed.uniq('fruits')
   });
@@ -16570,7 +16570,7 @@ Ember.computed.union = Ember.computed.uniq;
 
   Example
 
-  ```javascript
+  ```javascripts
   var obj = Ember.Object.createWithMixins({
     adaFriends: ['Charles Babbage', 'John Hobhouse', 'William King', 'Mary Somerville'],
     charlesFriends: ['William King', 'Mary Somerville', 'Ada Lovelace', 'George Peacock'],
@@ -16647,7 +16647,7 @@ Ember.computed.intersect = function () {
 
   Example
 
-  ```javascript
+  ```javascripts
   App.Hamster = Ember.Object.extend({
     likes: ['banana', 'grape', 'kale'],
     wants: Ember.computed.setDiff('likes', 'fruits')
@@ -16755,7 +16755,7 @@ SearchProxy = Ember.ObjectProxy.extend();
 
   The callback method you provide should have the following signature:
 
-  ```javascript
+  ```javascripts
   function(itemA, itemB);
   ```
 
@@ -16771,7 +16771,7 @@ SearchProxy = Ember.ObjectProxy.extend();
 
   Example
 
-  ```javascript
+  ```javascripts
   var ToDoList = Ember.Object.extend({
     todosSorting: ['name'],
     sortedTodos: Ember.computed.sort('todos', 'todosSorting'),
@@ -16950,7 +16950,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.Function) {
 
     Computed properties allow you to treat a function like a property:
 
-    ```javascript
+    ```javascripts
     MyApp.President = Ember.Object.extend({
       firstName: '',
       lastName:  '',
@@ -16978,7 +16978,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.Function) {
     `firstName` and `lastName` to determine its value. You can tell Ember
     about these dependencies like this:
 
-    ```javascript
+    ```javascripts
     MyApp.President = Ember.Object.extend({
       firstName: '',
       lastName:  '',
@@ -17019,7 +17019,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.Function) {
     call to the end of your method declarations in classes that you write.
     For example:
 
-    ```javascript
+    ```javascripts
     Ember.Object.extend({
       valueObserver: function() {
         // Executes whenever the "value" property changes
@@ -17057,7 +17057,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.Function) {
     call to the end of your method declarations in classes that you write.
     For example:
 
-    ```javascript
+    ```javascripts
     Ember.Object.extend({
       valueObserver: function() {
         // Executes immediately after the "value" property changes
@@ -17091,7 +17091,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.Function) {
     by adding the `observesBefore` call to the end of your method
     declarations in classes that you write. For example:
 
-    ```javascript
+    ```javascripts
     Ember.Object.extend({
       valueObserver: function() {
         // Executes whenever the "value" property is about to change
@@ -17125,7 +17125,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.Function) {
     You can listen for events simply by adding the `on` call to the end of
     your method declarations in classes or mixins that you write. For example:
 
-    ```javascript
+    ```javascripts
     Ember.Mixin.create({
       doSomethingWithElement: function() {
         // Executes whenever the "didInsertElement" event fires
@@ -17296,7 +17296,7 @@ var get = Ember.get, set = Ember.set;
   The example below shows a simple object that implement the `Ember.Freezable`
   protocol.
 
-  ```javascript
+  ```javascripts
   Contact = Ember.Object.extend(Ember.Freezable, {
     firstName: null,
     lastName: null,
@@ -17383,7 +17383,7 @@ var forEach = Ember.EnumerableUtils.forEach;
   method will only add the object to the enumerable if the object is not
   already present and is of a type supported by the enumerable.
 
-  ```javascript
+  ```javascripts
   set.addObject(contact);
   ```
 
@@ -17393,7 +17393,7 @@ var forEach = Ember.EnumerableUtils.forEach;
   will only remove the object if it is present in the enumerable, otherwise
   this method has no effect.
 
-  ```javascript
+  ```javascripts
   set.removeObject(contact);
   ```
 
@@ -17536,7 +17536,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Remove all elements from self. This is useful if you
     want to reuse an existing array without having to recreate it.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green", "blue"];
     color.length();   //  3
     colors.clear();   //  []
@@ -17557,7 +17557,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     This will use the primitive `replace()` method to insert an object at the
     specified index.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green", "blue"];
     colors.insertAt(2, "yellow");  // ["red", "green", "yellow", "blue"]
     colors.insertAt(5, "orange");  // Error: Index out of range
@@ -17581,7 +17581,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     If you pass a start and length that is beyond the
     length this method will throw an `OUT_OF_RANGE_EXCEPTION`.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green", "blue", "yellow", "orange"];
     colors.removeAt(0);     // ["green", "blue", "yellow", "orange"]
     colors.removeAt(2, 2);  // ["green", "blue"]
@@ -17612,7 +17612,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Push the object onto the end of the array. Works just like `push()` but it
     is KVO-compliant.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green"];
     colors.pushObject("black");     // ["red", "green", "black"]
     colors.pushObject(["yellow"]);  // ["red", "green", ["yellow"]]
@@ -17631,7 +17631,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Add the objects in the passed numerable to the end of the array. Defers
     notifying observers of the change until all objects are added.
 
-    ```javascript
+    ```javascripts
     var colors = ["red"];
     colors.pushObjects(["yellow", "orange"]);  // ["red", "yellow", "orange"]
     ```
@@ -17652,7 +17652,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Pop object from array or nil if none are left. Works just like `pop()` but
     it is KVO-compliant.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green", "blue"];
     colors.popObject();   // "blue"
     console.log(colors);  // ["red", "green"]
@@ -17674,7 +17674,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Shift an object from start of array or nil if none are left. Works just
     like `shift()` but it is KVO-compliant.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green", "blue"];
     colors.shiftObject();  // "red"
     console.log(colors);   // ["green", "blue"]
@@ -17694,7 +17694,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Unshift an object to start of array. Works just like `unshift()` but it is
     KVO-compliant.
 
-    ```javascript
+    ```javascripts
     var colors = ["red"];
     colors.unshiftObject("yellow");    // ["yellow", "red"]
     colors.unshiftObject(["black"]);   // [["black"], "yellow", "red"]
@@ -17713,7 +17713,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Adds the named objects to the beginning of the array. Defers notifying
     observers until all objects have been added.
 
-    ```javascript
+    ```javascripts
     var colors = ["red"];
     colors.unshiftObjects(["black", "white"]);   // ["black", "white", "red"]
     colors.unshiftObjects("yellow"); // Type Error: 'undefined' is not a function
@@ -17747,7 +17747,7 @@ Ember.MutableArray = Ember.Mixin.create(Ember.Array, Ember.MutableEnumerable, {
     Replace all the the receiver's content with content of the argument.
     If argument is an empty array receiver will be cleared.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green", "blue"];
     colors.setObjects(["black", "white"]);  // ["black", "white"]
     colors.setObjects([]);                  // []
@@ -17845,7 +17845,7 @@ Ember.TargetActionSupport = Ember.Mixin.create({
   Send an `action` with an `actionContext` to a `target`. The action, actionContext
   and target will be retrieved from properties of the object. For example:
 
-  ```javascript
+  ```javascripts
   App.SaveButtonView = Ember.View.extend(Ember.TargetActionSupport, {
     target: Ember.computed.alias('controller'),
     action: 'save',
@@ -17860,7 +17860,7 @@ Ember.TargetActionSupport = Ember.Mixin.create({
   The `target`, `action`, and `actionContext` can be provided as properties of
   an optional object argument to `triggerAction` as well.
 
-  ```javascript
+  ```javascripts
   App.SaveButtonView = Ember.View.extend(Ember.TargetActionSupport, {
     click: function() {
       this.triggerAction({
@@ -17877,7 +17877,7 @@ Ember.TargetActionSupport = Ember.Mixin.create({
   But `target` and `action` must be specified either as properties or with the argument
   to `triggerAction`, or a combination:
 
-  ```javascript
+  ```javascripts
   App.SaveButtonView = Ember.View.extend(Ember.TargetActionSupport, {
     target: Ember.computed.alias('controller'),
     click: function() {
@@ -17941,7 +17941,7 @@ Ember.TargetActionSupport = Ember.Mixin.create({
 /**
   This mixin allows for Ember objects to subscribe to and emit events.
 
-  ```javascript
+  ```javascripts
   App.Person = Ember.Object.extend(Ember.Evented, {
     greet: function() {
       // ...
@@ -17962,7 +17962,7 @@ Ember.TargetActionSupport = Ember.Mixin.create({
 
   You can also chain multiple event subscriptions:
 
-  ```javascript
+  ```javascripts
   person.on('greet', function() {
     console.log('Our person has greeted');
   }).one('greet', function() {
@@ -17978,7 +17978,7 @@ Ember.Evented = Ember.Mixin.create({
   /**
    Subscribes to a named event with given function.
 
-   ```javascript
+   ```javascripts
    person.on('didLoad', function() {
      // fired once the person has loaded
    });
@@ -18030,7 +18030,7 @@ Ember.Evented = Ember.Mixin.create({
     will be passed as parameters to the functions that are subscribed to the
     event.
 
-    ```javascript
+    ```javascripts
     person.on('didEat', function(food) {
       console.log('person ate some ' + food);
     });
@@ -18452,7 +18452,7 @@ function tap(proxy, promise) {
 /**
   A low level mixin making ObjectProxy, ObjectController or ArrayController's promise aware.
 
-  ```javascript
+  ```javascripts
   var ObjectPromiseController = Ember.ObjectController.extend(Ember.PromiseProxyMixin);
 
   var controller = ObjectPromiseController.create({
@@ -18469,7 +18469,7 @@ function tap(proxy, promise) {
   the controller has bindable attributes which
   track the promises life cycle
 
-  ```javascript
+  ```javascripts
   controller.get('isPending')   //=> true
   controller.get('isSettled')  //=> false
   controller.get('isRejected')  //=> false
@@ -18479,7 +18479,7 @@ function tap(proxy, promise) {
   When the the $.getJSON completes, and the promise is fulfilled
   with json, the life cycle attributes will update accordingly.
 
-  ```javascript
+  ```javascripts
   controller.get('isPending')   //=> false
   controller.get('isSettled')   //=> true
   controller.get('isRejected')  //=> false
@@ -18489,7 +18489,7 @@ function tap(proxy, promise) {
   As the controller is an ObjectController, and the json now its content,
   all the json properties will be available directly from the controller.
 
-  ```javascript
+  ```javascripts
   // Assuming the following json:
   {
     firstName: 'Stefan',
@@ -18564,7 +18564,7 @@ Ember.PromiseProxyMixin = Ember.Mixin.create({
 
     Example:
 
-    ```javascript
+    ```javascripts
     Ember.ObjectController.extend(Ember.PromiseProxyMixin).create({
       promise: <thenable>
     });
@@ -19185,7 +19185,7 @@ var get = Ember.get, set = Ember.set;
 
   A simple example of usage:
 
-  ```javascript
+  ```javascripts
   var pets = ['dog', 'cat', 'fish'];
   var ap = Ember.ArrayProxy.create({ content: Ember.A(pets) });
 
@@ -19198,7 +19198,7 @@ var get = Ember.get, set = Ember.set;
   an array, as they are accessed. This can be done by overriding
   `objectAtContent`:
 
-  ```javascript
+  ```javascripts
   var pets = ['dog', 'cat', 'fish'];
   var ap = Ember.ArrayProxy.create({
       content: Ember.A(pets),
@@ -19917,7 +19917,7 @@ var get = Ember.get, set = Ember.set, guidFor = Ember.guidFor, isNone = Ember.is
   Finally, you can pass in an existing set and the set will be copied. You
   can also create a copy of a set by calling `Ember.Set#copy()`.
 
-  ```javascript
+  ```javascripts
   // creates a new empty set
   var foundNames = new Ember.Set();
 
@@ -20013,7 +20013,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
     Clears the set. This is useful if you want to reuse an existing set
     without having to recreate it.
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set(["red", "green", "blue"]);
     colors.length;  // 3
     colors.clear();
@@ -20054,7 +20054,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
     Returns true if the passed object is also an enumerable that contains the
     same objects as the receiver.
 
-    ```javascript
+    ```javascripts
     var colors = ["red", "green", "blue"],
         same_colors = new Ember.Set(colors);
 
@@ -20087,7 +20087,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
 
     This is an alias for `Ember.MutableEnumerable.addObject()`.
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set();
     colors.add("blue");     // ["blue"]
     colors.add("blue");     // ["blue"]
@@ -20107,7 +20107,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
     or an object that is already not in the set, this method will have no
     effect. This is an alias for `Ember.MutableEnumerable.removeObject()`.
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set(["red", "green", "blue"]);
     colors.remove("red");     // ["blue", "green"]
     colors.remove("purple");  // ["blue", "green"]
@@ -20123,7 +20123,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
   /**
     Removes the last element from the set and returns it, or `null` if it's empty.
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set(["green", "blue"]);
     colors.pop();  // "blue"
     colors.pop();  // "green"
@@ -20146,7 +20146,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
 
     This is an alias for `Ember.MutableEnumerable.addObject()`.
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set();
     colors.push("red");   // ["red"]
     colors.push("green"); // ["red", "green"]
@@ -20163,7 +20163,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
 
     This is an alias for `Ember.Set.pop()`.
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set(["green", "blue"]);
     colors.shift();  // "blue"
     colors.shift();  // "green"
@@ -20181,7 +20181,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
 
     This is an alias of `Ember.Set.push()`
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set();
     colors.unshift("red");    // ["red"]
     colors.unshift("green");  // ["red", "green"]
@@ -20198,7 +20198,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
 
     This is an alias of `Ember.MutableEnumerable.addObjects()`
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set();
     colors.addEach(["red", "green", "blue"]);  // ["red", "green", "blue"]
     ```
@@ -20214,7 +20214,7 @@ Ember.Set = Ember.CoreObject.extend(Ember.MutableEnumerable, Ember.Copyable, Emb
 
     This is an alias of `Ember.MutableEnumerable.removeObjects()`
 
-    ```javascript
+    ```javascripts
     var colors = new Ember.Set(["red", "green", "blue"]);
     colors.removeEach(["red", "blue"]);  //  ["green"]
     ```
@@ -20385,7 +20385,7 @@ var loaded = {};
   The provided `callback` will be called with the `name` passed
   resolved from a string into the object:
 
-  ``` javascript
+  ``` javascripts
   Ember.onLoad('Ember.Handlebars' function(hbars){
     hbars.registerHelper(...);
   });
@@ -20521,7 +20521,7 @@ var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach;
   removed, or updated without changing the implicit order of their underlying
   content array:
 
-  ```javascript
+  ```javascripts
   songs = [
     {trackNumber: 4, title: 'Ob-La-Di, Ob-La-Da'},
     {trackNumber: 2, title: 'Back in the U.S.S.R.'},
@@ -20543,7 +20543,7 @@ var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach;
   If you add or remove the properties to sort by or change the sort direction the content
   sort order will be automatically updated.
 
-  ```javascript
+  ```javascripts
   songsController.set('sortProperties', ['title']);
   songsController.get('firstObject'); // {trackNumber: 2, title: 'Back in the U.S.S.R.'}
 
@@ -20555,7 +20555,7 @@ var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach;
   arrayProxy displays. Due to the fact that the underlying 'content' array is not changed, that
   array will not display the sorted list:
 
-   ```javascript
+   ```javascripts
   songsController.get('content').get('firstObject'); // Returns the unsorted original content
   songsController.get('firstObject'); // Returns the sorted content.
   ``` 
@@ -20594,7 +20594,7 @@ Ember.SortableMixin = Ember.Mixin.create(Ember.MutableEnumerable, {
       return a negative value if the first parameter is smaller than the second or
       return a positive value otherwise:
 
-    ```javascript
+    ```javascripts
     function(x,y) { // These are assumed to be integers
       if (x === y)
         return 0;
@@ -20809,7 +20809,7 @@ var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach,
   For example, imagine you wanted to display a list of items fetched via an XHR
   request. Create an `Ember.ArrayController` and set its `content` property:
 
-  ```javascript
+  ```javascripts
   MyApp.listController = Ember.ArrayController.create();
 
   $.get('people.json', function(data) {
@@ -20842,7 +20842,7 @@ var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach,
     {{/each}}
   ```
 
-  ```javascript
+  ```javascripts
   App.PostsController = Ember.ArrayController.extend({
     itemController: 'post'
   });
@@ -20862,7 +20862,7 @@ var get = Ember.get, set = Ember.set, forEach = Ember.EnumerableUtils.forEach,
 
   For example:
 
-  ```javascript
+  ```javascripts
   App.MyArrayController = Ember.ArrayController.extend({
     lookupItemController: function( object ) {
       if (object.get('isSpecial')) {
@@ -20904,7 +20904,7 @@ Ember.ArrayController = Ember.ArrayProxy.extend(Ember.ControllerMixin,
 
     For example:
 
-    ```javascript
+    ```javascripts
     App.MyArrayController = Ember.ArrayController.extend({
       lookupItemController: function( object ) {
         if (object.get('isSpecial')) {
@@ -21342,7 +21342,7 @@ var canSetNameOnInputs = (function() {
   final representation. `Ember.RenderBuffer` will generate HTML which can be pushed
   to the DOM.
 
-   ```javascript
+   ```javascripts
    var buffer = Ember.RenderBuffer('div');
   ```
 
@@ -21439,7 +21439,7 @@ Ember._RenderBuffer.prototype = {
     Usually, this gets set as the first parameter to `Ember.RenderBuffer`. For
     example, if you wanted to create a `p` tag, then you would call
 
-    ```javascript
+    ```javascripts
     Ember.RenderBuffer('p')
     ```
 
@@ -21928,7 +21928,7 @@ Ember.EventDispatcher = Ember.Object.extend({
     For example, to have the `mouseDown` method called on the target view when
     a `mousedown` event is received from the browser, do the following:
 
-    ```javascript
+    ```javascripts
     setupHandler('mousedown', 'mouseDown');
     ```
 
@@ -22336,7 +22336,7 @@ var EMPTY_ARRAY = [];
   can be customized by setting the `tagName` property. The following view
   class:
 
-  ```javascript
+  ```javascripts
   ParagraphView = Ember.View.extend({
     tagName: 'em'
   });
@@ -22353,7 +22353,7 @@ var EMPTY_ARRAY = [];
   The HTML `class` attribute of a view's tag can be set by providing a
   `classNames` property that is set to an array of strings:
 
-  ```javascript
+  ```javascripts
   MyView = Ember.View.extend({
     classNames: ['my-class', 'my-other-class']
   });
@@ -22370,7 +22370,7 @@ var EMPTY_ARRAY = [];
   of these properties will be added as part of the value for the view's `class`
   attribute. These properties can be computed properties:
 
-  ```javascript
+  ```javascripts
   MyView = Ember.View.extend({
     classNameBindings: ['propertyA', 'propertyB'],
     propertyA: 'from-a',
@@ -22390,7 +22390,7 @@ var EMPTY_ARRAY = [];
   itself will be used as the class name if the property is true. The class name
   will not be added if the value is `false` or `undefined`.
 
-  ```javascript
+  ```javascripts
   MyView = Ember.View.extend({
     classNameBindings: ['hovered'],
     hovered: true
@@ -22407,7 +22407,7 @@ var EMPTY_ARRAY = [];
   than the property name for use as the `class` HTML attribute by appending the
   preferred value after a ":" character when defining the binding:
 
-  ```javascript
+  ```javascripts
   MyView = Ember.View.extend({
     classNameBindings: ['awesome:so-very-cool'],
     awesome: true
@@ -22423,7 +22423,7 @@ var EMPTY_ARRAY = [];
   Boolean value class name bindings whose property names are in a
   camelCase-style format will be converted to a dasherized format:
 
-  ```javascript
+  ```javascripts
   MyView = Ember.View.extend({
     classNameBindings: ['isUrgent'],
     isUrgent: true
@@ -22439,7 +22439,7 @@ var EMPTY_ARRAY = [];
   Class name bindings can also refer to object values that are found by
   traversing a path relative to the view itself:
 
-  ```javascript
+  ```javascripts
   MyView = Ember.View.extend({
     classNameBindings: ['messages.empty']
     messages: Ember.Object.create({
@@ -22458,7 +22458,7 @@ var EMPTY_ARRAY = [];
   and a different class name if it evaluates to false, you can pass a binding
   like this:
 
-  ```javascript
+  ```javascripts
   // Applies 'enabled' class when isEnabled is true and 'disabled' when isEnabled is false
   Ember.View.extend({
     classNameBindings: ['isEnabled:enabled:disabled']
@@ -22481,7 +22481,7 @@ var EMPTY_ARRAY = [];
 
   This syntax offers the convenience to add a class if a property is `false`:
 
-  ```javascript
+  ```javascripts
   // Applies no class when isEnabled is true and class 'disabled' when isEnabled is false
   Ember.View.extend({
     classNameBindings: ['isEnabled::disabled']
@@ -22518,7 +22518,7 @@ var EMPTY_ARRAY = [];
   The return value of these properties will be used as the value of the view's
   HTML associated attribute:
 
-  ```javascript
+  ```javascripts
   AnchorView = Ember.View.extend({
     tagName: 'a',
     attributeBindings: ['href'],
@@ -22536,7 +22536,7 @@ var EMPTY_ARRAY = [];
   the property will follow HTML's pattern of repeating the attribute's name as
   its value:
 
-  ```javascript
+  ```javascripts
   MyTextInput = Ember.View.extend({
     tagName: 'input',
     attributeBindings: ['disabled'],
@@ -22552,7 +22552,7 @@ var EMPTY_ARRAY = [];
 
   `attributeBindings` can refer to computed properties:
 
-  ```javascript
+  ```javascripts
   MyTextInput = Ember.View.extend({
     tagName: 'input',
     attributeBindings: ['disabled'],
@@ -22580,7 +22580,7 @@ var EMPTY_ARRAY = [];
   view's tag. Most typically in Ember this function will be a compiled
   `Ember.Handlebars` template.
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     template: Ember.Handlebars.compile('I am the template')
   });
@@ -22603,7 +22603,7 @@ var EMPTY_ARRAY = [];
 
   And associate it by name using a view's `templateName` property:
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     templateName: 'some-template'
   });
@@ -22619,7 +22619,7 @@ var EMPTY_ARRAY = [];
 
   And `templateName` property:
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     templateName: 'posts/new'
   });
@@ -22634,7 +22634,7 @@ var EMPTY_ARRAY = [];
   template function. If a template is not later provided for the view instance
   the `defaultTemplate` value will be used:
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     defaultTemplate: Ember.Handlebars.compile('I was the default'),
     template: null,
@@ -22651,7 +22651,7 @@ var EMPTY_ARRAY = [];
   If a `template` or `templateName` is provided it will take precedence over
   `defaultTemplate`:
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     defaultTemplate: Ember.Handlebars.compile('I was the default')
   });
@@ -22671,7 +22671,7 @@ var EMPTY_ARRAY = [];
 
   The default context of the compiled template is the view's controller:
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     template: Ember.Handlebars.compile('Hello {{excitedGreeting}}')
   });
@@ -22716,7 +22716,7 @@ var EMPTY_ARRAY = [];
   `{{yield}}` helper. The HTML contents of a view's rendered `template` will be
   inserted at this location:
 
-  ```javascript
+  ```javascripts
   AViewWithLayout = Ember.View.extend({
     layout: Ember.Handlebars.compile("<div class='my-decorative-class'>{{yield}}</div>")
     template: Ember.Handlebars.compile("I got wrapped"),
@@ -22748,7 +22748,7 @@ var EMPTY_ARRAY = [];
   matches the event name. A `jQuery.Event` object will be passed as the
   argument to this method.
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     click: function(event) {
       // will be called when when an instance's
@@ -22768,7 +22768,7 @@ var EMPTY_ARRAY = [];
   with. This may be the view with the `eventManager` property or one of its
   descendent views.
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     eventManager: Ember.Object.create({
       doubleClick: function(event, view) {
@@ -22784,7 +22784,7 @@ var EMPTY_ARRAY = [];
   An event defined for an event manager takes precedence over events of the
   same name handled through methods on the view.
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     mouseEnter: function(event) {
       // will never trigger.
@@ -22804,7 +22804,7 @@ var EMPTY_ARRAY = [];
   name. Events not handled by the event manager will still trigger method calls
   on the descendent.
 
-  ```javascript
+  ```javascripts
   OuterView = Ember.View.extend({
     template: Ember.Handlebars.compile("outer {{#view InnerView}}inner{{/view}} outer"),
     eventManager: Ember.Object.create({
@@ -23597,7 +23597,7 @@ Ember.View = Ember.CoreView.extend({
     the `willInsertElement` event. After your function is invoked, this view
     and all of its child views will receive the `didInsertElement` event.
 
-    ```javascript
+    ```javascripts
     view._insertElementLater(function() {
       this.createElement();
       this.$().appendTo('body');
@@ -23954,7 +23954,7 @@ Ember.View = Ember.CoreView.extend({
     is a string value, the value of that string will be applied as a class
     name.
 
-    ```javascript
+    ```javascripts
     // Applies the 'high' class to the view element
     Ember.View.extend({
       classNameBindings: ['priority']
@@ -23965,7 +23965,7 @@ Ember.View = Ember.CoreView.extend({
     If the value of the property is a Boolean, the name of that property is
     added as a dasherized class name.
 
-    ```javascript
+    ```javascripts
     // Applies the 'is-urgent' class to the view element
     Ember.View.extend({
       classNameBindings: ['isUrgent']
@@ -23976,7 +23976,7 @@ Ember.View = Ember.CoreView.extend({
     If you would prefer to use a custom value instead of the dasherized
     property name, you can pass a binding like this:
 
-    ```javascript
+    ```javascripts
     // Applies the 'urgent' class to the view element
     Ember.View.extend({
       classNameBindings: ['isUrgent:urgent']
@@ -23996,7 +23996,7 @@ Ember.View = Ember.CoreView.extend({
     A list of properties of the view to apply as attributes. If the property is
     a string value, the value of that string will be applied as the attribute.
 
-    ```javascript
+    ```javascripts
     // Applies the type attribute to the element
     // with the value "button", like <div type="button">
     Ember.View.extend({
@@ -24008,7 +24008,7 @@ Ember.View = Ember.CoreView.extend({
     If the value of the property is a Boolean, the name of that property is
     added as an attribute.
 
-    ```javascript
+    ```javascripts
     // Renders something like <div enabled="enabled">
     Ember.View.extend({
       attributeBindings: ['enabled'],
@@ -24418,7 +24418,7 @@ Ember.View.reopenClass({
     For example a path like "content.isEnabled:enabled:disabled" will return the
     following object:
 
-    ```javascript
+    ```javascripts
     {
       path: "content.isEnabled",
       className: "enabled",
@@ -24966,7 +24966,7 @@ var ViewCollection = Ember._ViewCollection;
   provide a `childViews` property at creation time that contains instance of
   `Ember.View`:
 
-  ```javascript
+  ```javascripts
   aContainer = Ember.ContainerView.create({
     childViews: [Ember.View.create(), Ember.View.create()]
   });
@@ -24975,7 +24975,7 @@ var ViewCollection = Ember._ViewCollection;
   You can also provide a list of property names whose values are instances of
   `Ember.View`:
 
-  ```javascript
+  ```javascripts
   aContainer = Ember.ContainerView.create({
     childViews: ['aView', 'bView', 'cView'],
     aView: Ember.View.create(),
@@ -24986,7 +24986,7 @@ var ViewCollection = Ember._ViewCollection;
 
   The two strategies can be combined:
 
-  ```javascript
+  ```javascripts
   aContainer = Ember.ContainerView.create({
     childViews: ['aView', Ember.View.create()],
     aView: Ember.View.create()
@@ -25004,7 +25004,7 @@ var ViewCollection = Ember._ViewCollection;
 
   Given an empty `<body>` the following code
 
-  ```javascript
+  ```javascripts
   aContainer = Ember.ContainerView.create({
     classNames: ['the-container'],
     childViews: ['aView', 'bView'],
@@ -25030,7 +25030,7 @@ var ViewCollection = Ember._ViewCollection;
 
   Removing a view
 
-  ```javascript
+  ```javascripts
   aContainer.toArray();  // [aContainer.aView, aContainer.bView]
   aContainer.removeObject(aContainer.get('bView'));
   aContainer.toArray();  // [aContainer.aView]
@@ -25049,7 +25049,7 @@ var ViewCollection = Ember._ViewCollection;
 
   Given an empty `<body>` the following code
 
-  ```javascript
+  ```javascripts
   aContainer = Ember.ContainerView.create({
     classNames: ['the-container'],
     childViews: ['aView', 'bView'],
@@ -25075,7 +25075,7 @@ var ViewCollection = Ember._ViewCollection;
 
   Adding a view
 
-  ```javascript
+  ```javascripts
   AnotherViewClass = Ember.View.extend({
     template: Ember.Handlebars.compile("Another view")
   });
@@ -25363,7 +25363,7 @@ var get = Ember.get, set = Ember.set, fmt = Ember.String.fmt;
   The managed collection of objects is referenced as the `Ember.CollectionView`
   instance's `content` property.
 
-  ```javascript
+  ```javascripts
   someItemsView = Ember.CollectionView.create({
     content: ['A', 'B','C']
   })
@@ -25380,7 +25380,7 @@ var get = Ember.get, set = Ember.set, fmt = Ember.String.fmt;
 
   Given an empty `<body>` and the following code:
 
-  ```javascript
+  ```javascripts
   someItemsView = Ember.CollectionView.create({
     classNames: ['a-collection'],
     content: ['A','B','C'],
@@ -25410,7 +25410,7 @@ var get = Ember.get, set = Ember.set, fmt = Ember.String.fmt;
 
   Given an empty `<body>` and the following code:
 
-  ```javascript
+  ```javascripts
   anUnorderedListView = Ember.CollectionView.create({
     tagName: 'ul',
     content: ['A','B','C'],
@@ -25435,7 +25435,7 @@ var get = Ember.get, set = Ember.set, fmt = Ember.String.fmt;
   Additional `tagName` pairs can be provided by adding to
   `Ember.CollectionView.CONTAINER_MAP `
 
-  ```javascript
+  ```javascripts
   Ember.CollectionView.CONTAINER_MAP['article'] = 'section'
   ```
 
@@ -25445,7 +25445,7 @@ var get = Ember.get, set = Ember.set, fmt = Ember.String.fmt;
   `itemViewClass` or `tagName` matching is required CollectionView's
   `createChildView` method can be overidden:
 
-  ```javascript
+  ```javascripts
   CustomCollectionView = Ember.CollectionView.extend({
     createChildView: function(viewClass, attrs) {
       if (attrs.content.kind == 'album') {
@@ -25465,7 +25465,7 @@ var get = Ember.get, set = Ember.set, fmt = Ember.String.fmt;
   `CollectionView` is set to `null` or an empty array, an instance of this view
   will be the `CollectionView`s only child.
 
-  ```javascript
+  ```javascripts
   aListWithNothing = Ember.CollectionView.create({
     classNames: ['nothing']
     content: null,
@@ -25894,7 +25894,7 @@ var get = Ember.get, set = Ember.set, isNone = Ember.isNone,
   For example, you could implement the action
   `hello` for the `app-profile` component:
 
-  ```javascript
+  ```javascripts
   App.AppProfileComponent = Ember.Component.extend({
     actions: {
       hello: function(name) {
@@ -26024,7 +26024,7 @@ Ember.Component = Ember.View.extend(Ember.TargetActionSupport, Ember.ComponentTe
     of the component:
 
 
-    ```javascript
+    ```javascripts
     App.PlayButtonComponent = Ember.Component.extend({
       click: function(){
         if (this.get('isPlaying')) {
@@ -26050,7 +26050,7 @@ Ember.Component = Ember.View.extend(Ember.TargetActionSupport, Ember.ComponentTe
     where the component is used: 
 
 
-    ```javascript
+    ```javascripts
     App.ApplicationController = Ember.Controller.extend({
       actions: {
         musicStarted: function(){
@@ -26068,7 +26068,7 @@ Ember.Component = Ember.View.extend(Ember.TargetActionSupport, Ember.ComponentTe
     If no action name is passed to `sendAction` a default name of "action"
     is assumed.
 
-    ```javascript
+    ```javascripts
     App.NextButtonComponent = Ember.Component.extend({
       click: function(){
         this.sendAction();
@@ -26081,7 +26081,7 @@ Ember.Component = Ember.View.extend(Ember.TargetActionSupport, Ember.ComponentTe
     {{next-button action="playNextSongInAlbum"}}
     ```
 
-    ```javascript
+    ```javascripts
     App.ApplicationController = Ember.Controller.extend({
       actions: {
         playNextSongInAlbum: function(){
@@ -26140,7 +26140,7 @@ event handling in custom View subclasses.
 
 For example:
 
-```javascript
+```javascripts
 App.SaveButtonView = Ember.View.extend(Ember.ViewTargetActionSupport, {
   action: 'save',
   click: function() {
@@ -26153,7 +26153,7 @@ App.SaveButtonView = Ember.View.extend(Ember.ViewTargetActionSupport, {
 The `action` can be provided as properties of an optional object argument
 to `triggerAction` as well.
 
-```javascript
+```javascripts
 App.SaveButtonView = Ember.View.extend(Ember.ViewTargetActionSupport, {
   click: function() {
     this.triggerAction({
@@ -26281,7 +26281,7 @@ define("metamorph",
       /*
        * We replace chevron by its hex code in order to prevent escaping problems.
        * Check this thread for more explaination:
-       * http://stackoverflow.com/questions/8231048/why-use-x3c-instead-of-when-generating-html-from-javascript
+       * http://stackoverflow.com/questions/8231048/why-use-x3c-instead-of-when-generating-html-from-javascripts
        */
       return "<script id='" + this.start + "' type='text/x-placeholder'>\x3C/script>";
     };
@@ -26290,7 +26290,7 @@ define("metamorph",
       /*
        * We replace chevron by its hex code in order to prevent escaping problems.
        * Check this thread for more explaination:
-       * http://stackoverflow.com/questions/8231048/why-use-x3c-instead-of-when-generating-html-from-javascript
+       * http://stackoverflow.com/questions/8231048/why-use-x3c-instead-of-when-generating-html-from-javascripts
        */
       return "<script id='" + this.end + "' type='text/x-placeholder'>\x3C/script>";
     };
@@ -26725,7 +26725,7 @@ Ember.Handlebars = objectCreate(Handlebars);
 
   ## Simple bound helper example
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.helper('capitalize', function(value) {
     return value.toUpperCase();
   });
@@ -26748,7 +26748,7 @@ Ember.Handlebars = objectCreate(Handlebars);
   Assuming a view subclass named `App.CalendarView` were defined, a helper
   for rendering instances of this view could be registered as follows:
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.helper('calendar', App.CalendarView):
   ```
 
@@ -27185,7 +27185,7 @@ Ember.Handlebars.registerHelper('blockHelperMissing', function(path) {
 
   ## Simple example
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.registerBoundHelper('capitalize', function(value) {
     return value.toUpperCase();
   });
@@ -27205,7 +27205,7 @@ Ember.Handlebars.registerHelper('blockHelperMissing', function(path) {
   Like normal handlebars helpers, bound helpers have access to the options
   passed into the helper call.
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.registerBoundHelper('repeat', function(value, options) {
     var count = options.hash.count;
     var a = [];
@@ -27240,7 +27240,7 @@ Ember.Handlebars.registerHelper('blockHelperMissing', function(path) {
   third parameter which indicates extra dependencies on the passed in value.
   This allows the handlebars helper to update when these dependencies change.
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.registerBoundHelper('capitalizeName', function(value) {
     return value.get('name').toUpperCase();
   }, 'name');
@@ -27251,7 +27251,7 @@ Ember.Handlebars.registerHelper('blockHelperMissing', function(path) {
   `Ember.Handlebars.registerBoundHelper` supports binding to
   multiple properties, e.g.:
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.registerBoundHelper('concatenate', function() {
     var values = Array.prototype.slice.call(arguments, 0, -1);
     return values.join('||');
@@ -27502,7 +27502,7 @@ Ember.Handlebars.template = function(spec) {
   return HTML from a Handlebars helper, use this function to
   ensure Handlebars does not escape the HTML.
 
-  ```javascript
+  ```javascripts
   Ember.String.htmlSafe('<div>someString</div>')
   ```
 
@@ -27522,7 +27522,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.String) {
   /**
     Mark a string as being safe for unescaped output with Handlebars.
 
-    ```javascript
+    ```javascripts
     '<div>someString</div>'.htmlSafe()
     ```
 
@@ -28496,7 +28496,7 @@ EmberHandlebars.registerHelper('unless', function unlessHelper(context, options)
 
   If the rendering context of this template is the following object:
 
-  ```javascript
+  ```javascripts
   {
     imageUrl: 'http://lolcats.info/haz-a-funny',
     imageTitle: 'A humorous image of a cat'
@@ -28532,7 +28532,7 @@ EmberHandlebars.registerHelper('unless', function unlessHelper(context, options)
   return value of the property will become the value of the attribute. For
   example, the following view and template:
 
-  ```javascript
+  ```javascripts
     AView = Ember.View.extend({
       someProperty: function() {
         return "aValue";
@@ -28556,7 +28556,7 @@ EmberHandlebars.registerHelper('unless', function unlessHelper(context, options)
   A class name is provided via the syntax
   `somePropertyName:class-name-if-true`.
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     someBool: true
   })
@@ -29046,7 +29046,7 @@ EmberHandlebars.ViewHelper = Ember.Object.create({
   `{{view}}` will be set to the `Ember.View` instance of the template where
   `{{view}}` was called.
 
-  ```javascript
+  ```javascripts
   aView = Ember.View.create({
     template: Ember.Handlebars.compile("{{#view}} my parent: {{parentView.elementId}} {{/view}}")
   });
@@ -29121,7 +29121,7 @@ EmberHandlebars.ViewHelper = Ember.Object.create({
   The first argument can also be a relative path accessible from the current
   context.
 
-  ```javascript
+  ```javascripts
   MyApp = Ember.Application.create({});
   MyApp.OuterView = Ember.View.extend({
     innerViewClass: Ember.View.extend({
@@ -29159,7 +29159,7 @@ EmberHandlebars.ViewHelper = Ember.Object.create({
   You can supply a `viewName` option to `{{view}}`. The `Ember.View` instance
   will be referenced as a property of its parent view by this name.
 
-  ```javascript
+  ```javascripts
   aView = Ember.View.create({
     template: Ember.Handlebars.compile('{{#view viewName="aChildByName"}} hi {{/view}}')
   });
@@ -29222,7 +29222,7 @@ var get = Ember.get, handlebarsGet = Ember.Handlebars.get, fmt = Ember.String.fm
 
   And the following application code
 
-  ```javascript
+  ```javascripts
   App = Ember.Application.create()
   App.items = [
     Ember.Object.create({name: 'Dave'}),
@@ -29254,7 +29254,7 @@ var get = Ember.get, handlebarsGet = Ember.Handlebars.get, fmt = Ember.String.fm
 
   And application code
 
-  ```javascript
+  ```javascripts
   App = Ember.Application.create();
   App.items = [
     Ember.Object.create({name: 'Dave'}),
@@ -29785,7 +29785,7 @@ GroupedEach.prototype = {
   block once for each item. It is an extension of the base Handlebars `{{#each}}`
   helper:
 
-  ```javascript
+  ```javascripts
   Developers = [{name: 'Yehuda'},{name: 'Tom'}, {name: 'Paul'}];
   ```
 
@@ -29806,7 +29806,7 @@ GroupedEach.prototype = {
   When looping over objects that do not have properties, `{{this}}` can be used
   to render the object:
 
-  ```javascript
+  ```javascripts
   DeveloperNames = ['Yehuda', 'Tom', 'Paul']
   ```
 
@@ -29840,7 +29840,7 @@ GroupedEach.prototype = {
 
   And application code
 
-  ```javascript
+  ```javascripts
   App = Ember.Application.create({
     MyView: Ember.View.extend({
       items: [
@@ -29883,7 +29883,7 @@ GroupedEach.prototype = {
   This is useful in cases where properties of model objects need transformation
   or synthesis for display:
 
-  ```javascript
+  ```javascripts
   App.DeveloperController = Ember.ObjectController.extend({
     isAvailableForHire: function() {
       return !this.get('content.isEmployed') && this.get('content.isSeekingWork');
@@ -30024,7 +30024,7 @@ Ember.Handlebars.registerHelper('each', function eachHelper(path, options) {
 
   You can also manually register templates by adding them to the hash:
 
-  ```javascript
+  ```javascripts
   Ember.TEMPLATES["my_cool_template"] = Ember.Handlebars.compile('<b>{{user}}</b>');
   ```
 
@@ -30162,7 +30162,7 @@ var get = Ember.get, set = Ember.set;
 
   An empty `<body>` and the following application code:
 
-  ```javascript
+  ```javascripts
   AView = Ember.View.extend({
     classNames: ['a-view-with-layout'],
     layout: Ember.Handlebars.compile('<div class="wrapper">{{yield}}</div>'),
@@ -30188,7 +30188,7 @@ var get = Ember.get, set = Ember.set;
   The `yield` helper cannot be used outside of a template assigned to an
   `Ember.View`'s `layout` property and will throw an error if attempted.
 
-  ```javascript
+  ```javascripts
   BView = Ember.View.extend({
     classNames: ['a-view-with-layout'],
     template: Ember.Handlebars.compile('{{yield}}')
@@ -30792,7 +30792,7 @@ Ember.SelectOptgroup = Ember.CollectionView.extend({
 
   Example:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     names: ["Yehuda", "Tom"]
   });
@@ -30814,7 +30814,7 @@ Ember.SelectOptgroup = Ember.CollectionView.extend({
   You can control which `<option>` is selected through the `Ember.Select`'s
   `value` property:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     selectedName: 'Tom',
     names: ["Yehuda", "Tom"]
@@ -30854,7 +30854,7 @@ Ember.SelectOptgroup = Ember.CollectionView.extend({
   specifies the path on each object to the desired property for the
   element's text. Both paths must reference each object itself as `content`:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     programmers: [
       {firstName: "Yehuda", id: 1},
@@ -30882,7 +30882,7 @@ Ember.SelectOptgroup = Ember.CollectionView.extend({
   The `value` attribute of the selected `<option>` within an `Ember.Select`
   can be bound to a property on another object:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     programmers: [
       {firstName: "Yehuda", id: 1},
@@ -30921,7 +30921,7 @@ Ember.SelectOptgroup = Ember.CollectionView.extend({
   will be updated to match the content object of the rendered `<option>`
   element:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     selectedPerson: null,
     programmers: [
@@ -30958,7 +30958,7 @@ Ember.SelectOptgroup = Ember.CollectionView.extend({
   A `null` value for the `Ember.Select`'s `value` or `selection` property
   results in there being no `<option>` with a `selected` attribute:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     selectedProgrammer: null,
     programmers: [
@@ -30990,7 +30990,7 @@ Ember.SelectOptgroup = Ember.CollectionView.extend({
   value for the `Ember.Select` to display when there is no selection
   with the `prompt` option:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     selectedProgrammer: null,
     programmers: [
@@ -31119,7 +31119,7 @@ function program7(depth0,data) {
 
     Otherwise, this should be a list of objects. For instance:
 
-    ```javascript
+    ```javascripts
     Ember.Select.create({
       content: Ember.A([
           { id: 1, firstName: 'Yehuda' },
@@ -31413,7 +31413,7 @@ function program7(depth0,data) {
 
   ## Bound:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     firstName: "Stanley",
     entryNotAllowed: true
@@ -31439,7 +31439,7 @@ function program7(depth0,data) {
   can add this to the `TextField`'s `attributeBindings` property:
 
 
-  ```javascript
+  ```javascripts
   Ember.TextField.reopen({
     attributeBindings: ['required']
   });
@@ -31482,7 +31482,7 @@ function program7(depth0,data) {
 
   ## Bound:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     isAdmin: true
   });
@@ -31506,7 +31506,7 @@ function program7(depth0,data) {
   if you wanted to add a css class to all checkboxes in your application:
 
 
-  ```javascript
+  ```javascripts
   Ember.Checkbox.reopen({
     classNames: ['my-app-checkbox']
   });
@@ -31585,7 +31585,7 @@ Ember.Handlebars.registerHelper('input', function(options) {
   will be updated live as the user types 'Lots of text that IS bound' into
   the text area of their browser's window.
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     writtenWords: "Lots of text that IS bound"
   });
@@ -31606,7 +31606,7 @@ Ember.Handlebars.registerHelper('input', function(options) {
   If you wanted a one way binding between the text area and a div tag
   somewhere else on your screen, you could use `Ember.computed.oneWay`:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     writtenWords: "Lots of text that IS bound",
     outputWrittenWords: Ember.computed.oneWay("writtenWords")
@@ -31641,7 +31641,7 @@ Ember.Handlebars.registerHelper('input', function(options) {
   `Ember.computed.alias` costs more in terms of performance, so only use it when
   your really binding in both directions:
 
-  ```javascript
+  ```javascripts
   App.ApplicationController = Ember.Controller.extend({
     writtenWords: "Lots of text that IS bound",
     twoWayWrittenWords: Ember.computed.alias("writtenWords")
@@ -31676,7 +31676,7 @@ Ember.Handlebars.registerHelper('input', function(options) {
   `Ember.TextSupport` and adding it to the `attributeBindings` concatenated
   property:
 
-  ```javascript
+  ```javascripts
   Ember.TextArea.reopen({
     attributeBindings: ['required']
   });
@@ -35637,7 +35637,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
     Transition the application into another route. The route may
     be either a single route or route path:
 
-    ```javascript
+    ```javascripts
     this.transitionTo('blogPosts');
     this.transitionTo('blogPosts.recentEntries');
     ```
@@ -35646,7 +35646,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
     will be serialized into the URL using the `serialize` hook of
     the route:
 
-    ```javascript
+    ```javascripts
     this.transitionTo('blogPost', aPost);
     ```
 
@@ -35654,14 +35654,14 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
     be treated as an identifier instead. In this case, the `model`
     hook of the route will be triggered:
 
-    ```javascript
+    ```javascripts
     this.transitionTo('blogPost', 1);
     ```
 
     Multiple models will be applied last to first recursively up the
     resource tree.
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.resource('blogPost', {path:':blogPostId'}, function(){
         this.resource('blogComment', {path: ':blogCommentId'});
@@ -35676,7 +35676,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
     `/`). This is intended for testing and debugging purposes and
     should rarely be used in production code.
 
-    ```javascript
+    ```javascripts
     this.transitionTo('/');
     this.transitionTo('/blog/post/1/comment/13');
     ```
@@ -35685,7 +35685,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
 
     Simple Transition Example
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.route("index");
       this.route("secret");
@@ -35706,7 +35706,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
 
     Transition to a nested route
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.resource('articles', { path: '/articles' }, function() {
         this.route('new');
@@ -35724,7 +35724,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
 
     Multiple Models Example
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.route("index");
       this.resource('breakfast', {path:':breakfastId'}, function(){
@@ -35808,7 +35808,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
 
     Example
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.route("index");
       this.route("secret");
@@ -35841,7 +35841,7 @@ Ember.Route = Ember.Object.extend(Ember.ActionHandler, {
 
     Example
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.route("index");
     });
@@ -36966,7 +36966,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
 
       Example:
 
-      ```javascript
+      ```javascripts
       App.MyLinkView = Ember.LinkView.extend({
         init: function() {
           this._super();
@@ -37411,7 +37411,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     to ensure that only `true` disable the `link-to` helper you can
     override the global behaviour of `Ember.LinkView`.
 
-    ```javascript
+    ```javascripts
     Ember.LinkView.reopen({
       disabled: Ember.computed(function(key, value) {
         if (value !== undefined) {
@@ -37476,7 +37476,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     paths contain dynamic segments. This argument will become
     the model context of the linked route:
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.resource("photoGallery", {path: "hamster-photos/:photo_id"});
     });
@@ -37501,7 +37501,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     supplied model argument will become the context for the
     route with the dynamic segments:
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.resource("photoGallery", {path: "hamster-photos/:photo_id"}, function() {
         this.route("comment", {path: "comments/:comment_id"});
@@ -37528,7 +37528,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     paths contain dynamic segments. This argument will become the value
     of the dynamic segment:
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.resource("photoGallery", {path: "hamster-photos/:photo_id"});
     });
@@ -37586,7 +37586,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     application, reopen Ember.LinkView and supply the
     desired values:
 
-    ``` javascript
+    ``` javascripts
     Ember.LinkView.reopen({
       activeClass: "is-active",
       tagName: 'li'
@@ -37596,7 +37596,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     It is also possible to override the default event in
     this manner:
 
-    ``` javascript
+    ``` javascripts
     Ember.LinkView.reopen({
       eventName: 'customEventName'
     });
@@ -37699,7 +37699,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     route's `renderTemplate` hook. The following will render the `favoritePost`
     template into the `outlet`.
 
-    ``` javascript
+    ``` javascripts
     App.PostsRoute = Ember.Route.extend({
       renderTemplate: function() {
         this.render('favoritePost');
@@ -37718,7 +37718,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     route.
 
 
-    ``` javascript
+    ``` javascripts
     App.PostsRoute = Ember.Route.extend({
       renderTemplate: function() {
         this.render('favoritePost', { outlet: 'favoritePost' });
@@ -37734,7 +37734,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     {{outlet view='sectionContainer'}}
     ```
 
-    ``` javascript
+    ``` javascripts
     App.SectionContainer = Ember.ContainerView.extend({
       tagName: 'section',
       classNames: ['special']
@@ -37809,7 +37809,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
 
     Example:
 
-    ```javascript
+    ```javascripts
     App.NavigationController = Ember.Controller.extend({
       who: "world"
     });
@@ -38087,7 +38087,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
 
     And application code
 
-    ```javascript
+    ```javascripts
     App.ApplicationController = Ember.Controller.extend({
       actions: {
         anActionName: function() {
@@ -38202,7 +38202,7 @@ Ember.onLoad('Ember.Handlebars', function(Handlebars) {
     </div>
     ```
 
-    ```javascript
+    ```javascripts
     App.ApplicationView = Ember.View.extend({
       actions: {
         anActionName: function(){}
@@ -38294,7 +38294,7 @@ Ember.ControllerMixin.reopen({
     Transition the application into another route. The route may
     be either a single route or route path:
 
-    ```javascript
+    ```javascripts
     aController.transitionToRoute('blogPosts');
     aController.transitionToRoute('blogPosts.recentEntries');
     ```
@@ -38303,7 +38303,7 @@ Ember.ControllerMixin.reopen({
     will be serialized into the URL using the `serialize` hook of
     the route:
 
-    ```javascript
+    ```javascripts
     aController.transitionToRoute('blogPost', aPost);
     ```
 
@@ -38311,14 +38311,14 @@ Ember.ControllerMixin.reopen({
     be treated as an identifier instead. In this case, the `model`
     hook of the route will be triggered:
 
-    ```javascript
+    ```javascripts
     aController.transitionToRoute('blogPost', 1);
     ```
 
     Multiple models will be applied last to first recursively up the
     resource tree.
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.resource('blogPost', {path:':blogPostId'}, function(){
         this.resource('blogComment', {path: ':blogCommentId'});
@@ -38333,7 +38333,7 @@ Ember.ControllerMixin.reopen({
     `/`). This is intended for testing and debugging purposes and
     should rarely be used in production code.
 
-    ```javascript
+    ```javascripts
     aController.transitionToRoute('/');
     aController.transitionToRoute('/blog/post/1/comment/13');
     ```
@@ -38367,7 +38367,7 @@ Ember.ControllerMixin.reopen({
     This will replace the current history entry instead of adding a new one.
     Beside that, it is identical to `transitionToRoute` in all other respects.
 
-    ```javascript
+    ```javascripts
     aController.replaceRoute('blogPosts');
     aController.replaceRoute('blogPosts.recentEntries');
     ```
@@ -38376,7 +38376,7 @@ Ember.ControllerMixin.reopen({
     will be serialized into the URL using the `serialize` hook of
     the route:
 
-    ```javascript
+    ```javascripts
     aController.replaceRoute('blogPost', aPost);
     ```
 
@@ -38384,14 +38384,14 @@ Ember.ControllerMixin.reopen({
     be treated as an identifier instead. In this case, the `model`
     hook of the route will be triggered:
 
-    ```javascript
+    ```javascripts
     aController.replaceRoute('blogPost', 1);
     ```
 
     Multiple models will be applied last to first recursively up the
     resource tree.
 
-    ```javascript
+    ```javascripts
     App.Router.map(function() {
       this.resource('blogPost', {path:':blogPostId'}, function(){
         this.resource('blogComment', {path: ':blogCommentId'});
@@ -38406,7 +38406,7 @@ Ember.ControllerMixin.reopen({
     `/`). This is intended for testing and debugging purposes and
     should rarely be used in production code.
 
-    ```javascript
+    ```javascripts
     aController.replaceRoute('/');
     aController.replaceRoute('/blog/post/1/comment/13');
     ```
@@ -38465,7 +38465,7 @@ Ember.View.reopen({
 
     Example
 
-    ```javascript
+    ```javascripts
     var MyView = Ember.View.extend({
       template: Ember.Handlebars.compile('Child view: {{outlet "main"}} ')
     });
@@ -38534,7 +38534,7 @@ Ember.View.reopen({
 
     Example
 
-    ```javascript
+    ```javascripts
     var MyView = Ember.View.extend({
       template: Ember.Handlebars.compile('Child view: {{outlet "main"}} ')
     });
@@ -38636,7 +38636,7 @@ var get = Ember.get, set = Ember.set;
 
   Example:
 
-  ```javascript
+  ```javascripts
   App.Router.map(function() {
     this.resource('posts', function() {
       this.route('new');
@@ -38657,7 +38657,7 @@ var get = Ember.get, set = Ember.set;
 
   Example:
 
-  ```javascript
+  ```javascripts
   App.Router.map(function() {
     this.resource('posts', function() {
       this.route('new');
@@ -38685,7 +38685,7 @@ var get = Ember.get, set = Ember.set;
 
   Example:
 
-  ```javascript
+  ```javascripts
   App.Router.map(function() {
     this.resource('posts', function() {
       this.route('new');
@@ -38738,7 +38738,7 @@ Ember.Location = {
 
    For example:
 
-   ```javascript
+   ```javascripts
    // Given a location registered as follows:
    container.register('location:history-test', HistoryTestLocation);
 
@@ -38766,7 +38766,7 @@ Ember.Location = {
 
    Example:
 
-   ```javascript
+   ```javascripts
    Application.initializer({
     name: "history-test-location",
 
@@ -39675,7 +39675,7 @@ Ember.Resolver = Ember.Object.extend({
   in a subclass. For example, you could enhance how a template
   is resolved like so:
 
-  ```javascript
+  ```javascripts
   App = Ember.Application.create({
     Resolver: Ember.DefaultResolver.extend({
       resolveTemplate: function(parsedName) {
@@ -39985,7 +39985,7 @@ DeprecatedContainer.prototype = {
   Each Ember app has one and only one `Ember.Application` object. In fact, the
   very first thing you should do in your application is create the instance:
 
-  ```javascript
+  ```javascripts
   window.App = Ember.Application.create();
   ```
 
@@ -39995,7 +39995,7 @@ DeprecatedContainer.prototype = {
 
   For example, if you define a view class, it might look like this:
 
-  ```javascript
+  ```javascripts
   App.MyView = Ember.View.extend();
   ```
 
@@ -40037,7 +40037,7 @@ DeprecatedContainer.prototype = {
   default, you can specify custom events and their corresponding view method
   names by setting the application's `customEvents` property:
 
-  ```javascript
+  ```javascripts
   App = Ember.Application.create({
     customEvents: {
       // add support for the paste event
@@ -40054,7 +40054,7 @@ DeprecatedContainer.prototype = {
   For example, if only events inside a DOM element with the ID of `ember-app`
   should be delegated, set your application's `rootElement` property:
 
-  ```javascript
+  ```javascripts
   window.App = Ember.Application.create({
     rootElement: '#ember-app'
   });
@@ -40073,7 +40073,7 @@ DeprecatedContainer.prototype = {
 
   Libraries on top of Ember can add initializers, like so:
 
-  ```javascript
+  ```javascripts
   Ember.Application.initializer({
     name: 'api-adapter',
 
@@ -40097,7 +40097,7 @@ DeprecatedContainer.prototype = {
   detailed intra-transition logging can be logged with
   the `LOG_TRANSITIONS_INTERNAL` flag:
 
-  ```javascript
+  ```javascripts
   window.App = Ember.Application.create({
     LOG_TRANSITIONS: true, // basic logging of successful transitions
     LOG_TRANSITIONS_INTERNAL: true // detailed logging of all routing steps
@@ -40165,7 +40165,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
     to a hash containing the DOM event name as the key and the
     corresponding view method name as the value. For example:
 
-    ```javascript
+    ```javascripts
     App = Ember.Application.create({
       customEvents: {
         // add support for the paste event
@@ -40230,7 +40230,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     This allows application developers to do:
 
-    ```javascript
+    ```javascripts
     var App = Ember.Application.create();
 
     App.Router.map(function() {
@@ -40288,7 +40288,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     Example:
 
-    ```javascript
+    ```javascripts
     App = Ember.Application.create();
     App.deferReadiness();
 
@@ -40333,7 +40333,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     A simple example:
 
-    ```javascript
+    ```javascripts
     var App = Ember.Application.create();
     App.Orange  = Ember.Object.extend();
     App.register('fruit:favorite', App.Orange);
@@ -40345,7 +40345,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     An example of registering a controller with a non-standard name:
 
-    ```javascript
+    ```javascripts
     var App = Ember.Application.create(),
         Session  = Ember.Controller.extend();
 
@@ -40364,7 +40364,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     Some examples modifying that default behavior:
 
-    ```javascript
+    ```javascripts
     var App = Ember.Application.create();
 
     App.Person  = Ember.Object.extend();
@@ -40398,7 +40398,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     An example of providing a session object to all controllers:
 
-    ```javascript
+    ```javascripts
     var App = Ember.Application.create(),
         Session = Ember.Object.extend({ isAuthenticated: false });
 
@@ -40416,7 +40416,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     Injections can also be performed on specific factories.
 
-    ```javascript
+    ```javascripts
     App.inject(<full_name or type>, <property name>, <full_name>)
     App.inject('route', 'source', 'source:main')
     App.inject('route:application', 'email', 'model:email')
@@ -40497,7 +40497,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
 
     Typical Example:
 
-    ```javascript
+    ```javascripts
 
     var App;
 
@@ -40526,7 +40526,7 @@ var Application = Ember.Application = Ember.Namespace.extend(Ember.DeferredMixin
     setup. This could enable extra configuration, or enable asserting prior
     to the app becoming ready.
 
-    ```javascript
+    ```javascripts
 
     var App;
 
@@ -40912,7 +40912,7 @@ Ember.ControllerMixin.reopen({
 
     For example, when you define a controller:
 
-    ```javascript
+    ```javascripts
     App.CommentsController = Ember.ArrayController.extend({
       needs: ['post']
     });
@@ -40922,20 +40922,20 @@ Ember.ControllerMixin.reopen({
     controllers are accessible by name through the
     `controllers` property:
 
-    ```javascript
+    ```javascripts
     this.get('controllers.post'); // instance of App.PostController
     ```
 
     Given that you have a nested controller (nested resource):
 
-    ```javascript
+    ```javascripts
     App.CommentsNewController = Ember.ObjectController.extend({
     });
     ```
 
     When you define a controller that requires access to a nested one:
 
-    ```javascript
+    ```javascripts
     App.IndexController = Ember.ObjectController.extend({
       needs: ['commentsNew']
     });
@@ -40943,7 +40943,7 @@ Ember.ControllerMixin.reopen({
 
     You will be able to get access to it:
 
-    ```javascript
+    ```javascripts
     this.get('controllers.commentsNew'); // instance of App.CommentsNewController
     ```
 
@@ -40985,7 +40985,7 @@ Ember.ControllerMixin.reopen({
     this controller. Any controller listed by name in the `needs`
     property will be accessible by name through this property.
 
-    ```javascript
+    ```javascripts
     App.CommentsController = Ember.ArrayController.extend({
       needs: ['post'],
       postTitle: function(){
@@ -41047,7 +41047,7 @@ Ember Application
 
   Example:
 
-  ```javascript
+  ```javascripts
   Application.initializer({
     name: "containerDebugAdapter",
 
@@ -41160,7 +41160,7 @@ Ember.ContainerDebugAdapter = Ember.Object.extend({
 
   Example:
 
-  ```javascript
+  ```javascripts
   Application.initializer({
     name: "data-adapter",
 

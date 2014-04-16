@@ -59,7 +59,7 @@ Ember.Handlebars = objectCreate(Handlebars);
 
   ## Simple bound helper example
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.helper('capitalize', function(value) {
     return value.toUpperCase();
   });
@@ -82,7 +82,7 @@ Ember.Handlebars = objectCreate(Handlebars);
   Assuming a view subclass named `App.CalendarView` were defined, a helper
   for rendering instances of this view could be registered as follows:
 
-  ```javascript
+  ```javascripts
   Ember.Handlebars.helper('calendar', App.CalendarView):
   ```
 

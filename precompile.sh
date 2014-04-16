@@ -1,1 +1,1 @@
-handlebars ~/WebstormProjects/Sandbox2/source/javascript/templates/*.hbs -a -f ~/WebstormProjects/Sandbox2/source/javascript/templates.js
+handlebars ~/WebstormProjects/EmberSandbox/source/javascripts/templates/*.hbs -a -f ~/WebstormProjects/EmberSandbox/source/javascripts/templates.js

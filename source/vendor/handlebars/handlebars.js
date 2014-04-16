@@ -1751,7 +1751,7 @@ var __module10__ = (function(__dependency1__) {
   return __exports__;
 })(__module5__);
 
-// handlebars/compiler/javascript-compiler.js
+// handlebars/compiler/javascripts-compiler.js
 var __module11__ = (function(__dependency1__, __dependency2__) {
   "use strict";
   var __exports__;

@@ -1,0 +1,16 @@
+@font-face {
+  font-Family: Elephont;
+  src: url(Elephont-Regular.otf); }
+
+@font-face {
+  font-Family: Comfortaa;
+  src: url(Comfortaa-Regular.ttf); }
+
+body {
+  background: d9655b;
+  color: white;
+  font-family: 'Comfortaa'; }
+
+h1 {
+  font-family: 'Elephont';
+  font-size: 10em; }
