@@ -4,6 +4,7 @@
     "dependencies":{
         "requirejs" :"2.1.11",
         "ember" : "1.5.0",
-        "planetary.js":"1.1.0"
+        "planetary.js":"1.1.0",
+        "jquery-knob" : "1.2.0"
     }
 }
