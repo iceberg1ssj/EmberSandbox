@@ -14,7 +14,7 @@ body{
   //background:E35549;
   background:d9655b;
   //background:e59f63;
-  //background:a3706b;
+  //background:a67b78;
   text-align: center;
   color: white;
   font-family: 'Comfortaa';
@@ -23,9 +23,24 @@ div{
  // background: a15f59;
 
 }
-.spark{
+.icon-right-brazier:before{
   font-family: 'Spark';
-  padding: 0 0 0 0;
+  padding: 3px;
+  display: inline-block;
+  content:"\002A"
+}
+.icon-left-brazier:before{
+  font-family: 'Spark';
+  padding: 3px;
+  display: inline-block;
+  content:"\0024"
+}
+
+.icon-brazier:before{
+  font-family: 'Spark';
+  padding: 3px;
+  display: inline-block;
+  content:"\50"
 }
 .big{
    font-size: 20em;
@@ -46,7 +61,11 @@ div{
   font-size:20px;
   font-weight:bold;
 }
-
+.globe{
+  position: absolute;
+  top:40%;
+  left:20%;
+}
 h1{
   font-family: 'Elephont';
   font-size: 8em;

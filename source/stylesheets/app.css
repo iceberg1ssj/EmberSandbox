@@ -16,9 +16,23 @@ body {
   color: white;
   font-family: 'Comfortaa'; }
 
-.spark {
+.icon-right-brazier:before {
   font-family: 'Spark';
-  padding: 0 0 0 0; }
+  padding: 3px;
+  display: inline-block;
+  content: "\002A"; }
+
+.icon-left-brazier:before {
+  font-family: 'Spark';
+  padding: 3px;
+  display: inline-block;
+  content: "\0024"; }
+
+.icon-brazier:before {
+  font-family: 'Spark';
+  padding: 3px;
+  display: inline-block;
+  content: "\50"; }
 
 .big {
   font-size: 20em; }
@@ -37,6 +51,11 @@ body {
   box-shadow: 0 0 3px gray;
   font-size: 20px;
   font-weight: bold; }
+
+.globe {
+  position: absolute;
+  top: 40%;
+  left: 20%; }
 
 h1 {
   font-family: 'Elephont';
